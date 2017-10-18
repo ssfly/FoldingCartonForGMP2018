@@ -16,7 +16,7 @@
 % put your submission number here
 % this number will appear instead of authors and affiliations if the class option "submission" is active
 %
-\SubNumber{XXX}
+\SubNumber{{\color{red}{XXX}}}
 
 %
 % put the author names here
@@ -43,7 +43,7 @@
 \maketitle
 
 \begin{abstract}
-This paper provides an interactive system to construct three-dimensional carton model from two-dimensional design layouts, and simultaneously show these two views to asist users design box layouts more efficiently and productively. We also propose simple shape constrains to implement the optimized construction along with the acquired information from interaction. To make the interaction simpler, we also provide sysmmetry detection and automatically detection of the vertices that need to be merged together.  
+This paper provides an interactive system to construct three-dimensional carton model from two-dimensional design layouts, and simultaneously show these two views to asist users design box layouts more efficiently and productively. We also propose simple shape constrains related to edges and planes to implement the optimized construction along with the acquired information from interaction. To make the interaction simpler, we also provide sysmmetry detection and automatically detection of the vertices that need to be merged together, and allow users choose the right option.  
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,27 +53,41 @@ Cartons have been widely used in packaging industry to deliver various commoditi
 
 Cartons are usually designed based on experiance and trial-and-error, though recent years there are softwares developed to help designers improve efficiency and productivity, for example, KASEMAKE~\cite{KASEMAKE} can help users pick the existing structural designs and feed in required basic size and material, also users can re-import the finished artwork to show the print on the structural designs and fold it into a three-dimensinal view in seconds. There still comsumes much work and time to construct 3D model directly from 2D design layout. Moreover, it's sometimes intractable to fold an irregular box layout to final carton without instructions.
 
-{\color{red}{Briefly introduction to related works and their drawbacks.} }Researchers have studied paper folding problem for more than twenty years, they're primarily concerned with the following: (1) the eraction simulation to validate folding behaviers, as in []; (2) unfolding polyhedron; (3) other specific structure folding problems; 
+Researchers have studied papercraft problem for more than twenty years, they're primarily concerned with the following: (1) computational algorithm and mathmatic analysis for folding origami, as in~\cite{Ida:2007:MOC:1802954.1803021,Lang:1996:CAO:237218.237249,xl-idetc-14}; (2) problems on folding polygon and unfolding polyhedron~\cite{Bern:2003:UPC:636968.636970,O'Rourke:1998:FUC:646319.686376,Rourke2008Unfolding}, and some prooves to show the problem complexity of folding to polyhedron~\cite{Biedl:2005:NFP:1090462.1646553,Biedl2004When,Lubiw1996When}; (3) other specific structure folding problems, such as origami architectures~\cite{Le:2014:SCO:2574223.2574468,Li:2011:GSV:1964921.1964993,Li:2010:PAP:1833349.1778848,Ruiz:2013:GMP:2542355.2542360}, paper sliceforms~\cite{Le-Nguyen:2013:APS:2553684.2553686,McCrae:2011:SSB:2070781.2024202,Schwartzburg13}, Kinetogami which comprises multi-primitive and reconfigurable units folded from a single sheet of paper~\cite{Gao2013Kinetogami}; (4) applications to show the folding behaviour of paper~\cite{Thiel1998,Kishi:1998:OFP:786112.786279,Nimnual2007Virtual,Shimanuki2009Construction}. Although previous works sloved plenty problems in paper folding, they have not considered intelligent construction 3D models given 2D paper layouts. In this paper, we will focus on the carton folding problem and introduce shape optimization method to solve it.
 
 In this paper, we try to construct 3D realization from 2D structural box design directly by shape optimization based on the information obtained from simple user interaction.  Besides, we allow users design the pattern in 2D layout, and visualize it in a 3D view, which can improve the efficiency a lot when designing a complicated texture. The contribution of this paper includes the following:
 
-(1) We build an interactive system to design the 2D layout of cartons. It loads the specific type of layout and create the corresponding flat polymesh, by initialization and user interaction, we can finally construct the correct model of the carton, and automaticly slightly adjust the 2D layout according to the 3D model. Users can also design patterns on the layout, and system will show its 3D appearance immediately.
+(1) We build an interactive system to design the 2D layout of cartons. It loads the specific type of layout and create the corresponding flat polymesh, by initialization and user interaction, we can finally construct the correct model of the carton.
 
-(2) We propose simple shape constrains represented by a set of points to implement shape optimization. Observed from existing cartons, we can summarize edge constrain, coplane constrain and plane constrain to keep the shape of cartons.
+(2) We propose simple shape constrains represented by a set of points to implement shape optimization. Observed from existing cartons, we can summarize edge constrain, coplane constrain and plane constrain to keep the shape of cartons. Besides, we also provide symmetry detection to give users suggestions. 
 
 \section{Related Work}\label{sec:relatedwork}
 \subsection{Reconsturction from single line drawings} 
-Line drawings of three-dimensional objects have long been studied, and the main problem is still in reconstruction given projection on two-dimensional planes. Some researchers treat this task as optimization problem. \cite{Marill:1991:EHI:113057.113061} proposed MSDA(Minimize the Standard Deviation of Angles) principle to emulate the interpretion of line drawings as 3D objects. This new criterion is used by many other researchers later. \cite{Leclerc1992An} combined MSDA with the deviation from planarity as objective terms. \cite{Cao:2005:ORS:1097114.1097658} added symmetry measure of the objects to get more complicated results. Some other researchers try to solve this problem from the information theoretic point of view. \cite{Marill1992Why} minimized the description length of objects based on the idea that we usually pick the simplest one from infinite possibilities when we see the line drawing. \cite{Shoji20013} implemented the principle of minimizing the entropy of angle distribution between line segments using genetic algorithm. Different from the input above, ours are expanded layout of three-dimensional objects in 2D planes, the lackness of 3D topology is main cencern in our problem.
+Line drawings of three-dimensional objects have long been studied, and the main problem is still in reconstruction given projection on two-dimensional planes. Some researchers treat this task as optimization problem. \cite{Marill:1991:EHI:113057.113061} proposed MSDA(Minimize the Standard Deviation of Angles) principle to emulate the interpretion of line drawings as 3D objects. This new criterion is used by many other researchers later. \cite{Leclerc1992An} combined MSDA with the deviation from planarity as objective terms. \cite{Cao:2005:ORS:1097114.1097658} added symmetry measure of the objects to get more complicated results. Some other researchers try to solve this problem from the information theoretic point of view. \cite{Marill1992Why} minimized the description length of objects based on the idea that we usually pick the simplest one from infinite possibilities when we see the line drawing. \cite{Shoji20013} implemented the principle of minimizing the entropy of angle distribution between line segments using genetic algorithm. 
 
-\subsection{Folding to polyhedron} 
-\cite{Lubiw1996When} provided an dynamic programming algorithm based on Aleksandrov's theorem to test whether a polygon can be folded into polyhedra which takes $O(n^2)$ time and space. \cite{O'Rourke:1998:FUC:646319.686376} examined three open problems on the subject of folding and unfolding. \cite{Biedl2004When} has studied in polynomial time to solve the question of when is the graph  orthogonally convex polyhedra given a graph, edge length and facial angles, also shown that it's NP-hard to decide whether the graph is orthogonally polyhedra or not. Rather than given graph, \cite{Biedl:2005:NFP:1090462.1646553} proved that if given a net along with the dihedral angle at each crease, we can know whether a net can be folded to a polyhedron in polynomial time, but it becomes NP-hard without the angles even adding constrains on orthogonal polyhedron, which results in more difficultes on more complex input. Later, \cite{Demaine2010A} proposed a survey on the folding and unfolding in computational geometry. Compared to our desired result, polyhedron is a set of polygons without overlap, nevertheless, our 3D model contains paste faces that needs to be fixed to another panel. These works above justify our problem being harder to solve causing by even intricater inputs.
+Different from the input above, ours are expanded structural layout of three-dimensional objects in 2D planes, the lackness of 3D topology is main cencern in our problem.
+
+\subsection{Folding to polyhedron}
+
+\cite{Lubiw1996When} provided an dynamic programming algorithm based on Aleksandrov's theorem to test whether a polygon can be folded into polyhedra which takes $O(n^2)$ time and space. \cite{O'Rourke:1998:FUC:646319.686376} examined three open problems on the subject of folding and unfolding. \cite{Biedl2004When} has studied in polynomial time to solve the question of when is the graph  orthogonally convex polyhedra given a graph, edge length and facial angles, also shown that it's NP-hard to decide whether the graph is orthogonally polyhedra or not. Rather than given graph, \cite{Biedl:2005:NFP:1090462.1646553} proved that if given a net along with the dihedral angle at each crease, we can know whether a net can be folded to a polyhedron in polynomial time, but it becomes NP-hard without the angles even adding constrains on orthogonal polyhedron, which results in more difficultes on more complex input.
+
+Compared to our desired result, polyhedron is a set of polygons without overlap, nevertheless, our 3D model contains paste faces that needs to be fixed to another panel. These works above justify our problem being harder to solve causing by even intricater inputs.
 
 \subsection{Paper craft} 
-Various types of paper crafts have been studied in the field of computing and mathmatics. Origami is the Japanese traditional paper art of making different kind of objects by a single sheet of paper, and has been long studied since 1970s \cite{KANADE1980279}. Lately, there have been newly researched automaticly generating a type of paper architecture named pop-ups. \cite{Li:2010:PAP:1833349.1778848} presented formulation of layouts, sufficient conditions to generate foldable and stable paper architectures, and proposed an automatic algorithm given any 3D models. Plenty papers studied this subject following the idea of Li's and make new improvements\cite{Li:2011:GSV:1964921.1964993} \cite{Ruiz:2013:GMP:2542355.2542360} \cite{Le:2014:SCO:2574223.2574468}.
+Various types of paper crafts have been studied in the field of computation and mathmatics. Origami is the Japanese traditional paper art of making different kind of objects by a single sheet of paper, and has been long studied since 1970s~\cite{KANADE1980279}. 
 
-\subsection{Motion planning of paper folding}
+Lately, there have been newly researched automaticly generating a type of paper architecture named pop-ups. \cite{Li:2010:PAP:1833349.1778848} presented formulation of layouts, sufficient conditions to generate foldable and stable paper architectures, and proposed an automatic algorithm given any 3D models. Plenty papers studied this subject following the idea of Li's and make new improvements~\cite{Le:2014:SCO:2574223.2574468,Li:2011:GSV:1964921.1964993,Ruiz:2013:GMP:2542355.2542360}. Multiple types of papercraft have been researched as well, such as sliceforms~\cite{Le-Nguyen:2013:APS:2553684.2553686,McCrae:2011:SSB:2070781.2024202,Schwartzburg13}, which slots two sets of parallel paper patches together to make a foldable structure approximate to the given object. Cartons are also a kind of paper craft in another meaning.
 
+\subsection{Carton Folding}
+There are also some methods to solve the problem of carton folding. \cite{Song:2000:MPA:892954} modeled foldable objects as tree like multilink objects and use PRMs(probabilistic roadmap methods~\cite{Kavraki:1994:PRP:891758}) to find a sequence of motions to transform some configuration of a foldable object into another configuration. \cite{Mullineux:2010:CSC:1739328.1739673} provided a simulation of the carton during erection using a constraint-based approach. Both these work required the target state as a premise, while our work aim to generate the target configuration.
 
+\subsection{Application on folding behaviour}
+While researching on origami in the field of computational algorithm and geometric analysis, the simulation system is developed to visualize the folding behaviour of a single piece of paper. \cite{Thiel1998} provides a virtual origami system including the user interface to model folded paper and show animations of folding process. \cite{Kishi:1998:OFP:786112.786279} allows users create and edit the origami properties over the Web. \cite{Nimnual2007Virtual} presented an application for package folding practices in a virtual space.
+
+Although these applications can model folded paper well, they need given parameters to construct the model, and we want to simplify these oprations by implementing shape optimization.
+
+\subsection{Shape optimization}
+Least square fitting is the common method to enforce shape constrains, and have been used successfully for interactive tools and physical simulation~\cite{Botsch:2006:PCP:1281957.1281959,Igarashi:2005:ASM:1186822.1073323}. \cite{Bouaziz:2012:SSD:2346796.2346802} unified a large varity of geometric constrain into one optimization framework, and provided simple, robust implementation. \cite{Tang:2014:FPM:2601097.2601213} solved constrained equations by Newton-type method in a fast way, and provided an interactive system to model meshed constrained by equalities and inequalities.In our paper, we implement the shape optimization by the method introduced in \cite{Bouaziz:2012:SSD:2346796.2346802} for its robustness and simplicity.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -135,7 +149,6 @@ As for our initialization, we finially set $\pi/2$ to each angle and this causes
 
 \section{Shape Optimization}\label{sec:optimization}
 
-
 After initialization, we still need to refine the results that have not folded into pleasing results. The main idea is to prescribe the shape constrains througn deforming using a set of vertices of the polymesh. Moreover, with the extra information acquired from user interaction, we can finally construct the ideal 3D realization compared to the ground truth. As you can notice, we choose the coordinate of vertices as our input instead of fold angles on edges, the reason is that constrains represented by vertices are more simple and intuitive than angles, and we can implement the algorithm introduced by  Bouaziz et al.~\cite{Bouaziz:2012:SSD:2346796.2346802} easily.
 
 \subsection{Shape Constrain}\
@@ -173,32 +186,40 @@ The information acquired from user interaction will help us add enough constrain
 \end{equation}
 if we need to move these two points $\mathbf{v}_p$, $\mathbf{v}_q$ into the same place.
 
-When the above constrains still lead to an ill posed problem, a soft constrain was introduced:
+When the above constrains still lead to an ill posed problem, a soft constrain will be introduced:
 
 \noindent
-\textbf{Irrelevant Point Constrain} Points $\{\mathbf{v}_i\}$ which are not in the plane with $\mathbf{v}_p$ or $\mathbf{v}_q$, should be near the orignal location, and this constrain just take a light weight $w$, which is set 0.001 in our experiment. 
+\textbf{Irrelevant Point Constrain} Points $\{\mathbf{v}_i\}$ which are not in the same plane with $\mathbf{v}_p$ or $\mathbf{v}_q$, should be near the orignal location, and this constrain just take a light weight $w$, which is set 0.001 in our experiment. 
 \begin{equation}
 \mathbf{v}_i - \mathbf{\hat{v}}_i = 0.
 \label{equ:irrelevant}
 \end{equation}
 
+{\color{red}{Figure~\ref{fig:constrain} visually shows the constrains above.}}
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/constrain.png}
+	\includegraphics[width=0.9\textwidth]{images/constrains.png}
 	\caption{}
 	\label{fig:constrain}
 \end{figure}
 
-\subsection{Symmetry Detection}
 
-\subsection{Merging Points Detection}
+\subsection{Aided Detection}
+In order to asist users construct the final carton interactively, we also provide symmetry detection and merging points detection.
+
+\noindent
+\textbf{merging points detection} Consider the initialization results can represent the ideal model partly, we detect the disadjacent vertices that have one edge with same length, and if their Euclidean distance is below a certain threshold, we regard these vertices as targets that need to be located in the same place.
+
+\noindent
+\textbf{symmetry detection} On account of the simplicity of the carton shape, we regard the vertices that have same length set of incident edges as symmetric pair.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{User Interaction}\label{sec:interaction}
-After we initialize the flat mesh, we need to refine the model to final state through the shape constrain we propose and the information acquired from user interaction. We provide a set of operations to asist users construct the optimized model, such as selecting points that need to be merged together... Moreover, we can automatically detect the points that need to be located in one place and provide suggestions to allow users click the right option.
+After we initialize the flat mesh, we need to refine the model to final state through the shape constrain we propose and the information acquired from user interaction. We provide a set of operations to asist users construct the optimized model, such as selecting points that need to be merged together. Moreover, we can automatically detect the points that need to be located in one place and provide suggestions to allow users click the right option.
 
-
+{\color{red}{Figure~\ref{fig:interface}} shows the interaction we mainly use in our system.}
 
 \begin{figure}
 	\centering
@@ -210,14 +231,27 @@ After we initialize the flat mesh, we need to refine the model to final state th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Results and Discussion}\label{sec:result}
-{\color{red}{show every step of results and analysis}}
+{\color{red}{show every step of results and analysis, show Figure~\ref{fig:result}, limitation, more results Figure~\ref{fig:more}}}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/result.png}
+	\caption{}
+	\label{fig:result}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/more.png}
+	\caption{}
+	\label{fig:more}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion and Future Work}\label{sec:conclusion}
-In this paper, we 
-
-The direction of future research
+In this paper, we present an interactive modeling system to construct 3D carton realization from 2D expanded structural layout. We also provide simple shape constrains of cartons to implement optimization on the initial 3D models, which can asist users generate the ideal model efficiently and productively. The direction of future work is adding more operations to our system, includes automatically refining the 2D layouts by 3D models, adding the paste face through stablity detection. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
