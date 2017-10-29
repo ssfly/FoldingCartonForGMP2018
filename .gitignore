@@ -243,3 +243,10 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+doc/.DS_Store
+doc/FoldingCartons.aux
+doc/FoldingCartons.bbl
+doc/FoldingCartons.blg
+doc/FoldingCartons.out
+doc/FoldingCartons.pdf
+doc/FoldingCartons.synctex.gz
