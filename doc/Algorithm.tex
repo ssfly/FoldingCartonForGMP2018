@@ -1,9 +1,12 @@
 \section{Algorithm}\label{sec:optimization}
-\subsection{Definitions}
-As an input to our initialization, a flat polymesh $L$ is created from a 2D design layout of a box, then we deform the input polymesh into its 3D realization $R_i$ according to the predicted angles along each of its fold edges, and through optimization, generate final model $R_f$. A polymesh consists of a set of vertices, edges and faces $M = (V,E,F)$, the number of vertices $V$, edges $E$ and faces $F$ vary from one mesh to another. However, a pair of $(L,R_f)$ as the 2D layout and its corresponding 3D realization share the same topology and therefore they have the same number of vertices, edges and faces. A flat mesh as a 2D layout $L$ has its $z$ component of each vertex set to be a constant zero: $X_z(\mathbf{v}) \equiv 0$ where $X = (X_x,X_y,X_z)$ is the vertex coordinate, and its normal of each face set as $(0,0,1)^T$: $\mathbf{n}(f) \equiv (0,0,1)^T$, where $f \in F$.
+
+
+Assuming every face in the carton model is rigid, which means the interior angle in each plane stays the same. But planes can be bent during folding. \cxj{For example, a rigid plane can be bent during folding?}
+%
+Furthermore, planes are connected by hinges at the boundary of patches, and the planar layout has its front and back.
 
 \subsection{Initialization}\label{sec:initialization}
-In this section we explain the reason why using a specific angle to each fold edge, and constructing our initialized model. The basic idea is to interpret the folded state of a box as a series of rotation angles along each edge, where the problem of predicting folded state is turned into a problem of predicting these angles.
+In this section we explain the reason why using a specific angle to each fold edge, and constructing our initialized model. The basic idea is to interpret the folded state of a box as a series of rotation angles along each edge, where the problem of predicting the folded state is turned into a problem of predicting these angles.
 
 Observe from existing data, two common rules are summarized as our basic idea of initialization.
 
@@ -29,6 +32,8 @@ We can see from the five examples shown in Figure~\ref{fig:initial}, the up thre
 
 As for our initialization, $\pi/2$ is finally set to each angle and this causes more than half of boxes folded correctly in our database.
 
+
+\cxj{do not use angle. do you use parallelism?}
 %\begin{figure}
 %	\centering
 %	\includegraphics[width=0.9\textwidth]{images/initial.jpg}
@@ -39,7 +44,7 @@ As for our initialization, $\pi/2$ is finally set to each angle and this causes 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/initial2.jpg}
-	\caption{15 different initialization results. Eight of them need not further refine.}
+	\caption{15 different initialization results. Eight of them need not further refine. \cxj{show the input. point out which 8.}}
 	\label{fig:initial}
 \end{figure}
 
@@ -102,6 +107,12 @@ Figure~\ref{fig:constrain} illustrates the necessity of basic three constrains.
 
 
 \subsection{Aided Detection}
+
+While the initial 3D model with simple angle folding provides a rough idea about the carton shape, our system could automatically detect a group of possible shape constraints to form the final 3D model, such as vertex merging, shape symmetry, and so on. 
+%
+These guiding operations are provided to the user at bottom of the user interface, for the user to quickly select and explore the carton shapes.
+
+%
 In order to asist users construct the final carton interactively, we also provide symmetry detection and merging points detection to improve the efficiency of constructing models .
 
 \noindent

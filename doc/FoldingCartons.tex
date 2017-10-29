@@ -37,13 +37,24 @@
 %
 % the rest is as usual
 %
+ 
+
+%\definecolor{red}{rgb}{1.0,0.0,0.0}
+%\definecolor{blue}{rgb}{0.0,0.0,1.0}
+%\definecolor{purple}{rgb}{0.5,0.0,0.5}
+
+
+\newcommand{\comments}[1]{}
+\newcommand{\cxj}[1]{\textcolor{red}{(xuejin:#1)}}
+\newcommand{\xjmd}[1]{\textcolor{purple}{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \maketitle
 
 \begin{abstract}
-Cartons are broadly used in packaging industry and our daily life. While most of traditional packages are axis-aligned cuboids, there is a recent trend of creating paper packages and cartons with more complicated geometry. In this work, we present an interactive tool to manipulate 3D cartons from 2D layouts. Two key components, automatic folding and suggestive editing, make our system significantly easy to use. The automatic folding part automatically computes the 3D coordinates of vertices in cartons based on a series of simple rules. Then the suggestive editing part smartly provides a group of geometric constraints, such as vertex merging, shape symmetry, to generate more regular 3D shapes for users to explore.
+Cartons are broadly used in packaging industry and our daily life. While most of traditional packages are axis-aligned cuboids, there is a recent trend of creating paper packages and cartons with more complicated geometry. In this work, we present an interactive tool to manipulate 3D cartons from 2D layouts. Two key components, \emph{automatic folding} and \emph{suggestive editing}, make our system significantly easy to use. 
+The automatic folding part automatically computes the 3D coordinates of vertices in cartons based on a series of simple rules. Then the suggestive editing part smartly provides a group of geometric constraints, such as vertex merging, shape symmetry, to generate more regular 3D shapes for users to explore.
 \end{abstract}
 
 \input{Introduction}
@@ -56,7 +67,8 @@ Cartons are broadly used in packaging industry and our daily life. While most of
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion and Future Work}\label{sec:conclusion}
-In this paper, we present an interactive modeling system to construct 3D carton realization from 2D expanded structural layout. Simple shape constrains of cartons are also provided to implement optimization on the initial 3D models, which can assist users generate the ideal model efficiently and productively. The direction of future work is adding more operations to our system, includes automatically refining the 2D layouts by 3D models, adding the paste face through stability detection or design the surface pattern of a carton either in 2D or 3D. 
+In this paper, we present an interactive modeling system to construct a 3D carton model from 2D expanded structural layout. A series of shape constrains of cartons are provided for smartly optimizing and editing the initial 3D model, which assists users on producing the ideal model efficiently and productively. 
+The direction of future work is adding more operations to our system, including automatically refining the 2D layouts by 3D models, \cxj{do we have this in current version?} adding the paste face through stability detection or design the surface pattern of a carton either in 2D or 3D. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
