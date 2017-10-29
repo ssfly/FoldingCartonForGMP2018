@@ -1,54 +1,18 @@
 \section{Algorithm}\label{sec:optimization}
 
-
-Assuming every face in the carton model is rigid, which means the interior angle in each plane stays the same. But planes can be bent during folding. \cxj{For example, a rigid plane can be bent during folding?}
+\comments{
+Assuming every face in the carton model is rigid, which means the interior angle in each plane stays the same.  
 %
-Furthermore, planes are connected by hinges at the boundary of patches, and the planar layout has its front and back.
+Furthermore, planes are connected by hinges at the boundary of patches, and the planar layout has its front and back.}
 
-\subsection{Initialization}\label{sec:initialization}
-In this section we explain the reason why using a specific angle to each fold edge, and constructing our initialized model. The basic idea is to interpret the folded state of a box as a series of rotation angles along each edge, where the problem of predicting the folded state is turned into a problem of predicting these angles.
+In this section, we explain our algorithm in detail. 
+Initially, assume that the 2D layout $L$ lies on the $XOZ$ plane, so that each vertex $\mathbf{v}_i=(x_i,y_i,z_i)$ in $V$ has $z_i=0$. 
+Each face in $F$ has a normal $\mathbf{n}_i=(0,0,1)^T$.
+%
+In the first step of our algorithm, our system automatically computes the normal of the desired 3D carton based simple rules of orthogonality and parallelism.
+In the second step, the carton shape is refined based on a set of possible geometric constraints.
 
-Observe from existing data, two common rules are summarized as our basic idea of initialization.
-
-\noindent
-\textbf{Plane perpendicularity} The adjacent planes should not be paralleled, and we encourage them to be perpendicular. The term used here is
-\begin{equation}
-\alpha_{pe} = \sum_{i = 1}^{n} [\sin^{-1}(\mathbf{n}_1 \cdot \mathbf{n}_2)]^{2},
-\label{equ:perp}
-\end{equation}
-where $\hat{n}_1$ and $\hat{n}_2$ denotes all possible combinations of normals of adjacent planes, and $n$ is the number of such combinations.
-
-\noindent
-\textbf{Plane parallelism} It was observed that two planes with same shape are probably paralleled, so we encourage more planes with same shape to be paralleled. The term is
-\begin{equation}
-\alpha_{pa} = \sum_{i = 1}^{n} [\cos^{-1}(\mathbf{n}_1 \cdot \mathbf{n}_2)]^{2},
-\label{equ:para}
-\end{equation}
-where $\hat{n}_1$ and $\hat{n}_2$ denotes all possible combinations of normals of disadjacent planes that have same shape,  and $n$ is the number of such combinations.
-
-By implementing the CMA-ES(Covariance Matrix Adaptation Evolution Strategy)~\cite{CMAES} adding the above two constrains, the initialization result is shown in Figure~\ref{fig:initial}. Note that as the input variables are fold angles of edges, $\mathbf{n}_1 \cdot \mathbf{n}_2$ is represented by $cos\alpha$ where $\alpha$ is the angle between these two normal vectors. 
-
-We can see from the five examples shown in Figure~\ref{fig:initial}, the up three examples can have ideal results and the bottom two results are even not closed at last, which actually caused by the two constrains above lead to a result that each angle of each edge is always $\pi/2$. As a consequence, some irregular boxes will present a boxy shape which will be refined later by user interaction.
-
-As for our initialization, $\pi/2$ is finally set to each angle and this causes more than half of boxes folded correctly in our database.
-
-
-\cxj{do not use angle. do you use parallelism?}
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=0.9\textwidth]{images/initial.jpg}
-%	\caption{Initialized results of five examples. Each row is an example, and the first column is the 2D design layout, the second column is the polymesh created from layout, the third column is the initialized results optimized with the two constrains.}
-%	\label{fig:initial}
-%\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{images/initial2.jpg}
-	\caption{15 different initialization results. Eight of them need not further refine. \cxj{show the input. point out which 8.}}
-	\label{fig:initial}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{initialization}
 
 \subsection{Shape Constrain}
 After initialization, there is still a need to refine the results that have not folded into pleasing results. The main idea is to prescribe the shape constrains by a set of vertices of the polymesh. Moreover, with the extra information acquired from user interaction, we can finally construct the ideal 3D realization compared to the ground truth. As you can see, the coordinate of vertices are chosen as our input instead of fold angles on edges, the reason is that constrains represented by vertices are simpler and more intuitive than angles, and we can implement the algorithm introduced by Bouaziz et al. easily~\cite{Bouaziz:2012:SSD:2346796.2346802}.

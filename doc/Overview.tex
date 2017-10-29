@@ -12,10 +12,16 @@ Given the 2D layout, its topology is recovered by finding the minimum edge loops
 The 2D layout therefore can be represented by a polymesh $L=(V,E,F)$, where $V$ is the set of vertexes, $E$ is the set of all edges, and $F$ is the set of faces. 
 The edge set $E=E_c\cup E_f$, where $E_c$ is the set of cutting edges, and $E_f$ is the set of folding edges.
 %
-To build a 3D model $M={V, E, F}$ from the 2D layout $L$, while they share the same topology, we compute the 3D coordinates of all vertexes in $V$. 
+To build a 3D model $M=(V, E, F)$ from the 2D layout $L$, while they share the same topology, we should compute the 3D coordinates of all vertexes in $V$. 
 %
-Our algorithm consists of two steps. 
-First, an initial 3D model (Figure~\ref{fig:overview}(c)) is constructed by given a specific angle to each folding edge, which will be explained later in Sec.~\ref{sec:initialization}.
+
+However, it is not intuitive to analytically define the final 3D shape from a 2D layout. 
+One possible way is to detect all the possible geometric constraints such as vertex merging, face parallelism, adjacent face orthogonality, and then to integrate all these possible constraints together to form a large equation system. 
+But the challenge is that these local constraints can not well describe complicated and creative designs. Moreover, there are many ambiguities when detecting these constraints in a 2D layout that consisting of many repeated edges and faces. 
+%
+We propose a two-step algorithm based on the observation that humans usually fold edges with a right angle to get a rough shape and then merge vertexes or edges to get a stable 3D carton.
+% Our algorithm consists of two steps. 
+First, an initial 3D model (Figure~\ref{fig:overview}(c)) is constructed based on \cxj{a set of simple rules}, as described in Sec.~\ref{sec:initialization}.
 The user can then manipulate and explore 3D shapes of the canton based on a series of suggestive operation provided by our system. 
 %
 The final model is shown in Figure~\ref{fig:overview}(d).
