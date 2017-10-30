@@ -43,16 +43,31 @@ In our system, \cxj{two} types of shape refinement operations, vertex merging, a
 \noindent
 \textbf{Vertex merging} is detected among the nearby vertexes. 
 For irregular shapes consists of non-rectangular faces or non-perpendicular adjacent faces, some vertexes supposed to folded to the same position are close to each other after the initialization step. 
-For each pair of vertexes $\mathbf{v}_a$, $\mathbf{v}_b$, if $|\mathbf{v}_a-\mathbf{v}_b|<\epsilon$, and one edge connecting to $\mathbf{v}_a$ has the same length with one edge connecting to $\mathbf{v}_b$.
+For each pair of vertexes $\mathbf{v}_a$, $\mathbf{v}_b$ {\color{blue}{that in the nonadjacent face}}, if $|\mathbf{v}_a-\mathbf{v}_b|<\epsilon$, and one edge connecting to $\mathbf{v}_a$ has the same length with one edge connecting to $\mathbf{v}_b$.
 \cxj{Add discussion about more than two vertexes. Improve figure by highlighting the merging edge and vertex. }
+{\color{blue}{While there are sometimes more than two vertexes that need to be merged, as an example shown in Figure~\ref{fig:vertexMerging}, after $\mathbf{v}_a$ and $\mathbf{v}_b$ being considered to relocate in the same place, if the next vertex $\mathbf{v}_c$} is detected satisfying $|\mathbf{v}_c-\mathbf{v}_b|<\epsilon$ and one of incident edges of $\mathbf{v}_c$ has the same length as $\mathbf{v}_b$'s, vertex $\mathbf{v}_c$ also has the need to merge with $\mathbf{v}_a$ and $\mathbf{v}_b$.}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/vertexMerging.png}
+	\caption{$\mathbf{v}_a$ and $\mathbf{v}_b$ may have the need to merge cause $|\mathbf{v}_a-\mathbf{v}_b|<\epsilon$, and one edge connecting to $\mathbf{v}_a$ marked as green has the same length with one edge connecting to $\mathbf{v}_b$ also marked as green. $\mathbf{v}_c$ can also be considered that need to merge with $\mathbf{v}_a$ and $\mathbf{v}_b$ as $|\mathbf{v}_c-\mathbf{v}_b|<\epsilon$ and one of incident edges of $\mathbf{v}_c$ marked as blue has the same length as $\mathbf{v}_b$'s also marked as blue.}
+	\label{fig:vertexMerging}
+\end{figure}
 
 %Consider the initialization results can represent the ideal model partly, the disadjacent vertices that have one edge with same length can be regarded as targets that need to be located in the same place if their Euclidean distance is below a certain threshold.
 
 \noindent
 \textbf{symmetry detection} On account of the simplicity of the carton shape, the vertexes that have same length set of incident edges can be regarded as symmetric pair. While users select vertices that need to be merged together, symmetry detection can reduce repetitive work by giving users suggestions of symmetric vertices.
+
+{\color{blue}{Take Figure~\ref{fig:symmetry} as an example, given a symmetric 2D layout (a), we can generate its initialized model (b). While refining, the red circled four vertexes actually do the same operation as the blue ones on account of its symmetry property. As an result, our system can detect these symmetry pairs to assist users improve efficiency.}}
 \cxj{Add a figure to illustrate this. }
 
-
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/symmetry.jpg}
+	\caption{Given a symmetric 2D layout (a), we can generate its initialized model (b). While refining, the red circled four vertexes actually do the same operation as the blue ones on account of its symmetry property.}
+	\label{fig:symmetry}
+\end{figure}
 
 \cxj{Once the user selects a suggested shape refinement operation, we optimize the 3D shape based on a series of geometric constraints.}
 %We now introduce the constrains used in our construction method:
@@ -112,11 +127,12 @@ We add these soft constraints by adding a small weight $w$, which is set 0.001 i
 
 Figure~\ref{fig:constrain} illustrates the necessity of basic three constrains.
 \cxj{More detailed explaination on the figure. Explain the three constraints in the figure.}
+{\color{blue}{When we merge three vertexes circled in red Figure~\ref{fig:constrain} (b) into one location, the optimized model should be like Figure~\ref{fig:constrain}}. The model shown in Figure~\ref{fig:constrain} (d) (e) and (f) are the results after optimizing without edge length constrain, coplanarity and face rigidity constrain separately. Without edge length constrain, the two red edges have been stretched Figure~\ref{fig:constrain} (d), the face surrounded by red lines Figure~\ref{fig:constrain} (e) is not a standard plane without coplanarity, and the face surrounded by red lines in Figure~\ref{fig:constrain} (f) has been deformed without face rigidity.}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/constrain.jpg}
-	\caption{Given an initial state~(a), by choosing three points marked in red~(b) that need to be relocated together, basic three shape constrains can lead to the optimization result~(c). The bottom three are the results optimized lack of edge constrain, coplane constrain and plane constrain separately, compared to~(c), the results can not keep the basic shape well.}
+	\caption{Given an initial state~(a), by choosing three points marked in red~(b) that need to be relocated together, basic three shape constrains can lead to the optimization result~(c). The bottom three are the results optimized lack of edge length constrain, coplanarity and face rigidity separately, compared to~(c), the results can not keep the basic shape well. Without edge length constrain, the two red edges have been stretched (d), the face surrounded by red lines (e) is not a standard plane without coplanarity, and the face surrounded by red lines in (f) has been deformed without face rigidity.}
 	\label{fig:constrain}
 \end{figure}
 
