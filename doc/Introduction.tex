@@ -3,7 +3,7 @@
 Cartons have been widely used in packaging industry to deliver various commodities including food items, daily necessities and electronic components. Instead of very basic packaging shapes like cubes, there exist multiple fantastic cartons to package wedding candies or take-away coffee cups. These various designs increase much popularity, not to mention they are environmental friendly due to their recycling and degradability~\cite{Mullineux:2010:CSC:1739328.1739673}.
 
 Cartons are usually designed based on experience and trial-and-error, though recent years there are softwares developed to help designers improve efficiency and productivity.
-For example, KASEMAKE~\cite{KASEMAKE} can help users pick the existing structural designs and feed in required basic size and material.
+For example, KASEMAKE~\cite{KASEMAKE} can help users pick the existing structural designs from database and feed in required basic size and material.
 Moreover, users can re-import the finished artwork to show the print on the structural designs and fold it into a three-dimensional view in seconds. 
 However, it still costs much work and time to construct 3D model directly from 2D design layout. Sometimes, it is intractable to fold an irregular box layout to the final carton without instructions.
 
@@ -14,12 +14,13 @@ Although previous works solved plenty problems in paper folding, they have not c
 In this paper, we focus on the carton folding problem and introduce a shape optimization method.
 
 \cxj{discuss more about the challenges in this problem. Why is it difficult?}
-{\color{blue}{Given a structural layout of a carton only, it is hard to formulate the final state of model mathematically cause the information extracted from layout is little and even the topology is changing after merging vertexes that need to relocate in the same place. However it is also important to
-construct 3D models from layout, on one hand, the layouts of cartons are more reachable for common users, on the other hand, the unfolded layouts from 3D objects consume more paper and sometimes are not feasible to fold.}}
+{\color{blue}{Given a structural layout of a carton only, it is hard to formulate the final state of model mathematically because the information extracted from layout is not enough to represent the shape of corresponding model. Besides, Biedl et al. proved that given a polygon and a set of creases, it is NP-hard to know whether a polyhedron can be obtained by folding along the creases~\cite{Biedl:2005:NFP:1090462.1646553}, which can illustrate the difficulty of our problem in some way. 
+		
+Nevertheless it is also important to construct 3D models from layout, on one hand, the layouts of cartons are more reachable for common users, but they can not imagine how the final model is constructed. On the other hand, even users can obtain layouts by unfolding 3D objects, the unfolded layouts are fragile in some parts which are not suitable to fabricate and sometimes are not feasible to fold.}}
 
 
 In this paper, shape constrains for carton are proposed to optimize 2D design layout into the corresponding 3D realization. Moreover, an interactive design and exploration framework is developed to allow users visualize the structural layout in a 3D view, which can improve the efficiency a lot when designing a complicated paper package. The contribution of this paper includes the following:
 
-(1) An interactive and exploration system is presented to manipulate the shape of 3D carton. It creates the corresponding flat polymesh by initialization and user interaction, and the stereo model of the carton is finally constructed.
+(1) An interactive and exploration system is presented to manipulate the shape of 3D carton. It creates the corresponding 3D realization by initialization and user interaction, {\color{blue}{and users are allowed to edit the 3D model to explore deformed layouts automatically.}}
 
-(2) We propose shape constrains represented by a set of points to implement shape optimization. Observed from existing cartons,  constrains are summarized including edge constrain, coplane constrain and plane constrain to keep the shape of cartons. Besides, computer-aid detection like symmetry detection is brought to give users suggestions. 
+(2) We propose shape constrains represented by a set of points to implement shape optimization. Observed from existing cartons, constrains are summarized including edge length constrain, coplanarity and face rigidity to keep the shape of cartons. Besides, computer-aid detection like vertex merging and symmetry detection are brought to give users suggestions. 
