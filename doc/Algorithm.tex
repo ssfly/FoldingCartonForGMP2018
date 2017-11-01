@@ -6,12 +6,12 @@ Assuming every face in the carton model is rigid, which means the interior angle
 Furthermore, planes are connected by hinges at the boundary of patches, and the planar layout has its front and back.}
 
 In this section, we explain our algorithm in detail. 
-Initially, assume that the 2D layout $L$ lies on the $XOY$ plane, so that each vertex $\mathbf{v}_i=(x_i,y_i,z_i)$ in $V$ has $z_i=0$. 
+Initially, assume that the 2D layout $\mathcal{L}$ lies on the $XOY$ plane, so that each vertex $\mathbf{v}_i(x_i,y_i,z_i)$ in $V$ has $z_i=0$. 
 Each face in $F$ has a normal $\mathbf{n}_i=(0,0,1)^T$.
 %
-In the first step of our algorithm, our system automatically {\color{blue}{folds the original flat mesh into a rough model by assigning a specific angle to each fold edge.}}
+In the first step of our algorithm, our system automatically {\color{blue}{folds the original flat mesh into a rough model by assigning a specific angle to each folding edge.}}
 %computes the normal of the desired 3D carton based simple rules of orthogonality and parallelism.
-In the second step, the carton shape is refined based on a set of possible geometric constraints.
+In the second step, the carton shape is refined based on a set of potential geometric constraints.
 
 \input{initialization}
 
