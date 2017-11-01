@@ -8,11 +8,11 @@ There are also some methods to solve the problem of carton folding.
 Song et al. modeled foldable objects as tree like multilink objects and used PRMs~(probabilistic roadmap methods~\cite{Kavraki:1994:PRP:891758}) to find a sequence of motions to transform some configuration of a foldable object into another configuration~\cite{Song:2000:MPA:892954}. 
 Mullineux et al. provided a simulation of the carton during erection using a constraint-based approach. Both these work required the target state as a premise, while our work aim to generate the target configuration~\cite{Mullineux:2010:CSC:1739328.1739673}.
 
-Talking about the complexity of folding to polyhedron problem, Lubiw provided an dynamic programming algorithm based on Aleksandrov's theorem to test whether a polygon can be folded into polyhedra which takes $O(n^2)$ time and space~\cite{Lubiw1996When}. 
+The complexity of folding to polyhedron problem has also been studied for decades, Lubiw provided an dynamic programming algorithm based on Aleksandrov's theorem to test whether a polygon can be folded into polyhedra which takes $O(n^2)$ time and space~\cite{Lubiw1996When}. 
 O'Rourke examined three open problems on the subject of folding and unfolding~\cite{O'Rourke:1998:FUC:646319.686376}. 
 Biedl et al. has studied in polynomial time to solve the question of when is the graph orthogonally convex polyhedra given a graph, edge length and facial angles, also shown that it's NP-hard to decide whether the graph is orthogonally polyhedra or not~\cite{Biedl2004When}. Rather than the given graph, Biedl et al. proved that if given a net along with the dihedral angle at each crease, we can know whether a net can be folded to a polyhedron in polynomial time, but it becomes NP-hard without the angles even adding constrains on orthogonal polyhedron, which results in more difficulties on more complex input~\cite{Biedl:2005:NFP:1090462.1646553}.
 Compared to our desired result, polyhedron is a set of polygons without overlap, nevertheless, our 3D model contains paste faces that needs to be fixed to another panel. 
-These works above justify our problem being harder to solve causing by even more intricate inputs.
+These works above justify our problem being hard to solve caused by even more intricate inputs.
 
 \subsection{Reconstruction from single line drawings} 
 A line drawing is defined as a 2D projection of object containing its vertexes and edges. Line drawings of three-dimensional objects have long been studied, and the main problem is still in object reconstruction given its projection on two-dimensional planes. 
@@ -25,8 +25,7 @@ Some other researchers try to solve this problem from the information theoretic 
 Marill minimized the description length of objects based on the idea that we usually pick the simplest one from infinite possibilities when we see the line drawing~\cite{Marill1992Why}. 
 Shoji et al. implemented the principle of minimizing the entropy of angle distribution between line segments using genetic algorithm~\cite{Shoji20013}. 
 %
-Different from the input above, ours are expanded structural layout of three-dimensional objects in 2D planes.
-Lack of 3D topology is the main concern in our problem.
+Different from the input above, ours are expanded structural layout of three-dimensional objects in 2D planes, the final model is constructed based on the folding process instead of mathematical presentation.
 
 \subsection{Shape optimization}
 Multiple algorithms have been proposed to enforce shape constrains, and have been used successfully for interactive tools and physical simulation~\cite{Botsch:2006:PCP:1281957.1281959,Igarashi:2005:ASM:1186822.1073323}. 
