@@ -46,6 +46,7 @@ Second, once two vertexes or two faces are confirmed to be merged to modify the 
 %
 Each constraint is defined as following.  
 
+\comments{
 \paragraph{Edge length constraint.} 
 For each edge in $\{e_j\}_{j=1...M}$, its length should be preserved when refine the carton shape.
 Hence, its two endpoints $\mathbf{v}_{js}$ and end point $\mathbf{v}_{jt}$ should satisfy 
@@ -54,37 +55,53 @@ Hence, its two endpoints $\mathbf{v}_{js}$ and end point $\mathbf{v}_{jt}$ shoul
 \label{equ:edge}
 \end{equation}
 %to ensure that the length of each edge stays the same.
-
-\paragraph{Coplanarity} {For each face $\{f_k\}_{k=1,\dots,P}$, the coplanarity constraint specifies all vertexes in a face should always lie on a plane. 
-We can compute the sorted eigenvectors $\mathbf{U} = [\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ of the $ 3 \times 3$ covariance matrix $\mathbf{C}^T\mathbf{C}$ where $\mathbf{C} = \{\mathbf{v}_{kj}\}_{j=1}^{N_k}$, $\mathbf{v}_{kj}$ is the $j$th vertex among $N_k$ vertexes in face $p_k$}. Plane projection can be obtained by removing the last column of $\mathbf{U}$. 
+}
 
 
-\paragraph{Face rigidity} For each face $\{p_k\}_{k=1 \dots P}$, the length of each line connecting two non-adjacent points $\mathbf{v}_{ka}, \mathbf{v}_{kb}$ on the plane remains the same, so that the shape of each plane keeps unchanged.
+\paragraph{Face rigidity} 
+Each face keeps its shape unchanged during folding. This constraint is defined by keeping the length of each line connecting any pair of points $\mathbf{v}_{a}, \mathbf{v}_{b}$ on the face the same.
 \begin{equation}
-||\mathbf{v}_{ka} - \mathbf{v}_{kb}||^2 = ||\hat{\mathbf{v}}_{ka} - \hat{\mathbf{v}}_{kb}||^2.
+||\mathbf{v}_{a} - \mathbf{v}_{b}||^2 = ||\hat{\mathbf{v}}_{a} - \hat{\mathbf{v}}_{b}||^2.
 \label{equ:plane}
 \end{equation}
 
-The information acquired from user interaction will add enough constrains to solve the optimization problem, and one of the interaction is to choose the right given suggestion including points needed to be merged together. As for the point information, the constrains can be written like:
 
-\noindent
-\textbf{Merging vertexes} For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be merged as the same vertex, we have 
+
+
+\paragraph{Coplanarity} {For each face in  $\{f_k\}_{k=1,\dots,P}$, the coplanarity constraint specifies all vertexes in a face should always lie on a plane. 
+We can compute the sorted eigenvectors $\mathbf{U} = [\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ of the $ 3 \times 3$ covariance matrix $\mathbf{C}^T\mathbf{C}$ where $\mathbf{C} = \{\mathbf{v}_{kj}\}_{j=1}^{N_k}$, $\mathbf{v}_{kj}$ is the $j$th vertex among $N_k$ vertexes in the face. Plane projection can be obtained by removing the last column of $\mathbf{U}$. 
+
+
+If a set of shape modification operations, such as vertex merging and face pasting, are selected, more constraints are added to optimization vertex positions. 
+%
+%and one of the interaction is to choose the right given suggestion including points needed to be merged together. As for the point information, the constrains can be written like:
+
+\paragraph{Merging vertexes} 
+For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be merged as the same vertex, we have 
 \begin{equation}
-\mathbf{v}_p - \mathbf{v}_q = 0.
+\mathbf{v}_p - \mathbf{v}_q = \mathbf{0}.
 \label{equ:point}
 \end{equation}
 %if these two points $\mathbf{v}_p$, $\mathbf{v}_q$ need to be moved into the same place. 
 
+\paragraph{Face pasting} \cxj{check if this is right. }
+If a smaller face $f_a$ is snapped to a larger face $f_b$, for each vertex $\vn_i$ in the face $f_b$, we have
+\begin{equation} \label{eq:face-paste}
+\vn_i \cdot \mathbf{n}_a = 0,
+\end{equation}
+where $\mathbf{n}_a$ is the normal of the face $f_a$.
 
-When the above constrains still lead to an ill-posed problem, soft constraints will be added to keep the original positions of irrelevant vertexes. 
 
+When the above constrains still lead to an ill-posed problem, soft constraints will be added to keep the original positions of the vertexes that are not relative to the shape modification. 
 
-\paragraph{Irrelevant vertexes} $\{\mathbf{v}_i\}$ which are not in the same plane with $\mathbf{v}_p$ or $\mathbf{v}_q$, should be stay at their original location. 
-We add these soft constraints by adding a small weight $w$, which is set 0.001 in our experiments. 
+\paragraph{Irrelevant vertexes} For the vertexes $\{\mathbf{v}_i\}$ are not in the same plane with any vertex for merging or face pasting, they should stay at their original location. 
+We add these soft constraints by adding a small weight $w$, which is set 0.001 in our experiments to the following equation. 
 \begin{equation}
 \mathbf{v}_i - \mathbf{\hat{v}}_i = 0.
 \label{equ:irrelevant}
 \end{equation}
+
+\cxj{My suggestion on Figure 4: (a)(b) 3D shape before/after vertex merging, highlight the vertexes. (c)(d) 3D shape before/after face pasting.}
 
 Figure~\ref{fig:constrain} illustrates the necessity of basic three constrains.
 \cxj{More detailed explaination on the figure. Explain the three constraints in the figure.}
@@ -93,7 +110,7 @@ Figure~\ref{fig:constrain} illustrates the necessity of basic three constrains.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/constrain.jpg}
-	\caption{Given an initial state~(a), by choosing three points marked in red~(b) that need to be relocated together, basic three shape constrains can lead to the optimization result~(c). The bottom three are the results optimized lack of edge length constrain, coplanarity and face rigidity separately, compared to~(c), the results can not keep the basic shape well. Without edge length constrain, the two red edges have been stretched (d), the face surrounded by red lines (e) is not a standard plane without coplanarity, and the face surrounded by red lines in (f) has been deformed without face rigidity.}
+	\caption{Given an initial shape~(a), by merging the three vertexes marked in red~(b), basic three shape constrains can lead to the optimization result~(c). The bottom three are the results optimized lack of edge length constraint, coplanarity and face rigidity separately, compared to~(c), the results can not keep the basic shape well. Without edge length constrain, the two red edges have been stretched (d), the face surrounded by red lines (e) is not a standard plane without coplanarity, and the face surrounded by red lines in (f) has been deformed without face rigidity.}
 	\label{fig:constrain}
 \end{figure}
 
