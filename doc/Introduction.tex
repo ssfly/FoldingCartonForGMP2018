@@ -1,25 +1,29 @@
 \section{Introduction}
 
-Cartons have been widely used in packaging industry to deliver various commodities including food items, daily necessities and electronic components. Instead of very basic packaging shapes like cubes, there exist multiple fantastic cartons to package wedding candies or take-away coffee cups. These various designs increase much popularity, not to mention they are environmental friendly due to their recycling and degradability~\cite{Mullineux:2010:CSC:1739328.1739673}.
+Cartons have been widely used in the packaging industry to deliver various commodities including food, daily necessities and electronic components. Instead of very basic packaging shapes like cubes, there exist multiple fantastic cartons to package wedding candies or take-away coffee cups. 
+These various designs increase much popularity, not to mention they are environmental friendly due to their recycling and degradability~\cite{Mullineux:2010:CSC:1739328.1739673}.
 
 Cartons are usually designed based on experience and trial-and-error, though recent years there are softwares developed to help designers improve efficiency and productivity.
-For example, KASEMAKE~\cite{KASEMAKE} can help users pick the existing structural designs from database and feed in required basic size and material.
-Moreover, users can re-import the finished artwork to show the print on the structural designs and fold it into a three-dimensional view in seconds. 
-However, it still costs much work and time to construct 3D model directly from 2D design layout. Sometimes, it is intractable to fold an irregular box layout to the final carton without instructions.
+For example, KASEMAKE~\cite{KASEMAKE} can help users pick existing structural designs from a database and feed in the required size and materials.
+Moreover, users can re-import a finished artwork to show the print on the structural designs and fold it into a three-dimensional view in seconds. 
+However, it still costs much work and time to construct a 3D model directly from a 2D design layout.
+Sometimes, it is intractable for common users to fold an irregular box layout to a 3D carton without instructions.
 
 Papercraft problems have attracted a large mount of attentions in computer graphics community for decades.
-Researchers primarily concerned with the following: (1) computational algorithm and mathematic analysis for folding origami~\cite{Ida:2007:MOC:1802954.1803021,Lang:1996:CAO:237218.237249,xl-idetc-14}; (2) problems on the folding polygon and unfolding polyhedron~\cite{Bern:2003:UPC:636968.636970,O'Rourke:1998:FUC:646319.686376,Rourke2008Unfolding}, and some prooves to show the problem complexity of folding to polyhedron~\cite{Biedl:2005:NFP:1090462.1646553,Biedl2004When,Lubiw1996When}; (3) other specific structure folding problems like Kinetogami which comprises multi-primitive and reconfigurable units folded from a single sheet of paper~\cite{Gao2013Kinetogami} and applications to show the folding behaviour of paper~\cite{Thiel1998,Kishi:1998:OFP:786112.786279,Nimnual2007Virtual,Shimanuki2009Construction}. 
+Researchers primarily concerned with the following issues: (1) computational algorithm and mathematic analysis for folding origami~\cite{Ida:2007:MOC:1802954.1803021,Lang:1996:CAO:237218.237249,xl-idetc-14}; (2) problems on the folding polygon and unfolding polyhedron~\cite{Bern:2003:UPC:636968.636970,O'Rourke:1998:FUC:646319.686376,Rourke2008Unfolding}, and some proofs to show the problem complexity of folding to polyhedron~\cite{Biedl:2005:NFP:1090462.1646553,Biedl2004When,Lubiw1996When}; (3) other specific structure folding problems like Kinetogami which comprises multi-primitive and reconfigurable units folded from a single sheet of paper~\cite{Gao2013Kinetogami} and applications to show the folding behavior of paper~\cite{Thiel1998,Kishi:1998:OFP:786112.786279,Nimnual2007Virtual,Shimanuki2009Construction}. 
 %
-Although previous works solved plenty problems in paper folding, they have not considered intelligent construction 3D models given 2D paper layouts. \cxj{TBD..}
-In this paper, we focus on the carton folding problem and introduce a shape optimization method.
-
-\cxj{discuss more about the challenges in this problem. Why is it difficult?}
-{\color{blue}{Given a structural layout of a carton only, it is hard to formulate the final state of model mathematically because the information extracted from layout is not enough to represent the shape of corresponding model. Besides, Biedl et al. proved that given a polygon and a set of creases, it is NP-hard to know whether a polyhedron can be obtained by folding along the creases~\cite{Biedl:2005:NFP:1090462.1646553}, which can illustrate the difficulty of our problem in some way. 
+Although previous techniques solved a number of problems in paper folding, they have not considered intelligent construction 3D models given 2D paper layouts. 
+In this paper, we focus on the carton folding problem and introduce an interactive shape optimization method.
+ 
+Given a structural layout of a carton only, it is nontrivial to formulate the final 3D model mathematically because the information extracted from the 2D layout is not enough to represent the shape of its corresponding model. 
+Biedl et al. proved that given a polygon and a set of creases, it is NP-hard to know whether a polyhedron can be obtained by folding along the creases~\cite{Biedl:2005:NFP:1090462.1646553}, which can illustrate the difficulty of our problem in some way. 
 		
-Nevertheless it is also important to construct 3D models from layout, on one hand, the layouts of cartons are more reachable for common users, but they can not imagine how the final model is constructed. On the other hand, even users can obtain layouts by unfolding 3D objects, the unfolded layouts are fragile in some parts which are not suitable to fabricate and sometimes are not feasible to fold.}}
+Nevertheless it is important to construct 3D models from 2D layouts. 
+On one hand, 2D layouts of cartons are more reachable for common users, but they can not imagine how the final model is constructed. On the other hand, even users can obtain layouts by unfolding 3D objects, the unfolded layouts are fragile in some parts which are not suitable to fabricate and sometimes are not feasible to fold.
 
 
-In this paper, shape constrains for carton are proposed to optimize 2D design layout into the corresponding 3D realization. Moreover, an interactive design and exploration framework is developed to allow users visualize the structural layout in a 3D view, which can improve the efficiency a lot when designing a complicated paper package. The contribution of this paper includes the following:
+In this paper, shape constrains for carton are proposed to optimize 2D design layout into the corresponding 3D realization. 
+Moreover, an interactive design and exploration framework is developed to allow users to visualize the structural layout in a 3D view, which can improve the efficiency a lot when designing a complicated paper package. The contribution of this paper includes the following:
 
 (1) An interactive and exploration system is presented to manipulate the shape of 3D carton. It creates the corresponding 3D realization by initialization and user interaction, {\color{blue}{and users are allowed to edit the 3D model to explore deformed layouts automatically.}}
 
