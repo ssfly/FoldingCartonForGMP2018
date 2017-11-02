@@ -40,7 +40,7 @@ Given the current mesh whose vertex positions are defined as $\{\vo_i\}^{N}_{i=1
 %
 The geometric constraints can be classified into two groups, \cxj{shape rigidity constraints and shape modification constraints}.
 % 
-First, to keep the rigidity of each face, the constraints including edge length constraint, coplanarity, and face rigidity, which are corresponding to similarity constraint and plane constraint described in \cite{Bouaziz:2012:SSD:2346796.2346802}. 
+First, to keep the rigidity of each face, the constraints including face rigidity and coplanarity, which are corresponding to similarity constraint and plane constraint described in \cite{Bouaziz:2012:SSD:2346796.2346802}. 
 %
 Second, once two vertexes or two faces are confirmed to be merged to modify the rough shape, more constraints are added. 
 %
@@ -69,7 +69,7 @@ Each face keeps its shape unchanged during folding. This constraint is defined b
 
 
 \paragraph{Coplanarity} {For each face in  $\{f_k\}_{k=1,\dots,P}$, the coplanarity constraint specifies all vertexes in a face should always lie on a plane. 
-We can compute the sorted eigenvectors $\mathbf{U} = [\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ of the $ 3 \times 3$ covariance matrix $\mathbf{C}^T\mathbf{C}$ where $\mathbf{C} = \{\mathbf{v}_{kj}\}_{j=1}^{N_k}$, $\mathbf{v}_{kj}$ is the $j$th vertex among $N_k$ vertexes in the face. Plane projection can be obtained by removing the last column of $\mathbf{U}$. 
+We can compute the sorted eigenvectors $\mathbf{U} = [\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ of the $ 3 \times 3$ covariance matrix $\mathbf{C}^T\mathbf{C}$ where $\mathbf{C} = \{\mathbf{v}_{kj}\}_{j=1}^{N_k}$, $\mathbf{v}_{kj}$ is the $j$th vertex among $N_k$ vertexes in the face. {\color{blue}{By removing the last column of $\mathbf{U}$, we can implement plane projection as \cite{Bouaziz:2012:SSD:2346796.2346802} described. }}
 
 
 If a set of shape modification operations, such as vertex merging and face pasting, are selected, more constraints are added to optimization vertex positions. 
@@ -90,7 +90,7 @@ For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be m
 %\vn_i \cdot \mathbf{n}_a = 0,
 %\end{equation}
 %where $\mathbf{n}_a$ is the normal of the face $f_a$.
-{\color{blue}{If two faces $f_a$ and $f_b$ need to snap together, the whole vertexes of these two faces should satisfy coplanarity constrain.}}
+{\color{blue}{If two faces $f_a$ and $f_b$ need to snap together, the whole vertexes of these two faces should satisfy the coplanarity constrain.}}
 
 
 When the above constrains still lead to an ill-posed problem, soft constraints will be added to keep the original positions of the vertexes that are not relative to the shape modification. 
@@ -102,7 +102,7 @@ We add these soft constraints by adding a small weight $w$, which is set 0.001 i
 \label{equ:irrelevant}
 \end{equation}
 
-Combining the above constraints, the new vertex locations can be solved using the \cxj{XX method, cite the paper.}
+Combining the above constraints, the new vertex locations can be solved \cxj{XX method, cite the paper.}{\color{blue}{by minimizing the proximity function based on projection operators\cite{Bouaziz:2012:SSD:2346796.2346802}.}}
 %
 Figure~\ref{fig:shaperefinement} shows two examples of shape refinement by merging three vertexes and pasting two faces respectively. 
 

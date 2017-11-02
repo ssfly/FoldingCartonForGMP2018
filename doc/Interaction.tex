@@ -27,9 +27,9 @@ In our system, \cxj{three} types of shape refinement operations, vertex merging,
 
 \paragraph{Vertex Merging.} 
 For irregular shapes which consist of non-rectangular faces or non-perpendicular adjacent faces, some vertexes are close to each other after the initialization step.
-A practical carton model can be obtained by simply merging these nearby vertex together if their have coherent edge.
+A practical carton model can be obtained by simply merging these nearby vertexes together if their have coherent edges.
 %
-Any pair of vertexes $\mathbf{v}_a$, $\mathbf{v}_b$ in different faces are detected as mergeable, if $|\mathbf{v}_a-\mathbf{v}_b|<\epsilon$, and there is an edge connecting to $\mathbf{v}_a$ having the equal length with one edge connecting to $\mathbf{v}_b$,
+Any pair of vertexes $\mathbf{v}_a$, $\mathbf{v}_b$ in different faces is detected as mergeable, if $|\mathbf{v}_a-\mathbf{v}_b|<\epsilon$, and there is an edge connecting to $\mathbf{v}_a$ having the equal length with one edge connecting to $\mathbf{v}_b$,
 %
 $\epsilon$ is a distance threshold and set as 50mm in our experiments.
 More vertexes can be merged together, as shown in Figure~\ref{fig:suggestion:a} by gradually adding one vertex $\mathbf{v}$ each time if $\mathbf{v}$ is mergeable with at least one vertex in current list. 
@@ -45,19 +45,18 @@ Two vertexes $\vn_a$ and $\vn_b$ are defined as corresponding vertexes if they h
 	\centering
 	 \subfigure[Vertex Merging]{
 	 	\label{fig:suggestion:a} %% label for first subfigure
-	 	\includegraphics[width=0.3\textwidth]{images/merging.pdf}}
+	 	\includegraphics[width=0.3\textwidth]{images/suggestiona.pdf}}
 	 \hfill
 	 \subfigure[Merging Propagation]{
 	 	\label{fig:suggestion:b} %% label for second subfigure
-	 	\includegraphics[width=0.3\textwidth]{images/symmetry.pdf}}
+	 	\includegraphics[width=0.3\textwidth]{images/suggestionb.pdf}}
 	 \hfill
-	 \subfigure[Symmetry Detection]{
- %% label for second subfigure
-	 	\includegraphics[width=0.3\textwidth]{images/symmetry.pdf}
+	 \subfigure[{\color{blue}{Face Pasting}}]{
+	 	\includegraphics[width=0.3\textwidth]{images/suggestionc.pdf}
 	 	\label{fig:facepasting}
 	 	}
 	 
-	 \caption{Three different suggestions on shape modification. (a) A group of vertexes (marked in red) are detected as mergeable. $\mathbf{v}_a$ and $\mathbf{v}_b$ are close to each other and one edge connecting to $\mathbf{v}_a$ has the same length with one edge connecting to $\mathbf{v}_b$ (green edges). $\mathbf{v}_c$ is also considered to be merged with $\mathbf{v}_a$ and $\mathbf{v}_b$ because $\mathbf{v}_c$ is close to $\mathbf{v}_b$ and one edge of $\mathbf{v}_c$ has the same length as $\mathbf{v}_b$ (blue edges). (b) Once the user confirms a suggested vertex merging operation, our system automatically proposes a symmetric group of vertexes that can be also merged (marked in blue). (c) If a small face is close to a larger face and \cxj{share an edge in the same length (marked in red)?}, our system suggests the two faces can be sticked together. }
+	 \caption{Three different suggestions on shape modification. (a) A group of vertexes (marked in red) are detected as mergeable. $\mathbf{v}_a$ and $\mathbf{v}_b$ are close to each other and one edge connecting to $\mathbf{v}_a$ has the same length with one edge connecting to $\mathbf{v}_b$ (green edges). $\mathbf{v}_c$ is also considered to be merged with $\mathbf{v}_a$ and $\mathbf{v}_b$ because $\mathbf{v}_c$ is close to $\mathbf{v}_b$ and one edge of $\mathbf{v}_c$ has the same length as $\mathbf{v}_b$ (blue edges). (b) Once the user confirms a suggested vertex merging operation, our system automatically proposes a symmetric group of vertexes that can be also merged (marked in blue). (c) (If a small face is close to a larger face and \cxj{share an edge in the same length (marked in red)?}, our system suggests the two faces can be sticked together.) {\color{blue}{If faces marked in red are detected close to each other and the same with their normals, our system suggests these faces can be sticked together.}}}
 	 \label{fig:suggestion}
 \end{figure}
 
