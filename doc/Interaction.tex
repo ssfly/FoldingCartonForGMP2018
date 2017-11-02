@@ -74,8 +74,7 @@ Two vertexes $\vn_a$ and $\vn_b$ are defined as corresponding vertexes if they h
 
 \comments{Take Figure~\ref{fig:suggestion} (b) as an example, after users selecting vertexes circled in red, our system can automatically detect their symmetric set circled in blue. As an result, our system can detect these symmetry pairs to assist users improve efficiency.}
 
-\paragraph{Face Pasting.} \cxj{ToBeDone} {\color{blue}{Merging vertexes sometimes are not enough to generate desired model caused by the paste faces as shown in Figure~\ref{fig:facepaste} (b), by selecting these faces manually, our system can enforce planarity to the model by requesting these faces lie on the same plane. (Figure needs modification. Actually this action is not suggestive.)}}
-
+\paragraph{Face Pasting.} \cxj{ToBeDone} {\color{blue}{Merging vertexes sometimes are not enough to generate desired model caused by the paste faces as shown in Figure~\ref{fig:facepaste} (b). A pair of faces $f_a$ and $f_b$ is considered mergable if their normals $\mathbf{n}_a$ and $\mathbf{n}_b$ satisfy $\mathbf{n}_a \cdot \mathbf{n}_b > 0.5$, and for each vertex in $\{\mathbf{v}_{ai}\}_{i=1}^{N_a}$,  $|\mathbf{v}_{ai} - \mathbf{v}_{c}^b| < \epsilon_d$, where $\mathbf{v}_{c}^b$ is the centroid of face $f_b$. When involving multiple faces, the detection strategy is same with vertex merging. (Figure needs modification.)}}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/facepaste.jpg}
@@ -89,7 +88,7 @@ Two vertexes $\vn_a$ and $\vn_b$ are defined as corresponding vertexes if they h
 
 
 \cxj{Explain when modify the 3D model, how to change the 2D layout. }
-{\color{blue}{In order to explore more design layouts, our system also allows users edit 3D models by dragging the edges into desired place, and enforce the geometric constraints similar to those described in Sec.~\ref{sec:refinement}. The edge length constraint and face rigidity are still the same, we expanded coplanarity to all the vertexes as they should lie on the same plane. The Irrelevant vertexes which exclude the two vertexes lie on the moving edge stay as close to their original location as well. Figure~\ref{fig:editing} shows one example of 3D editing.}}
+{\color{blue}{In order to explore more design layouts, our system also allows users edit 3D models by dragging the edges into desired place, and enforce the geometric constraints similar to those described in Sec.~\ref{sec:refinement}. The edge length constraint and face rigidity are still the same, we expanded coplanarity to all the vertexes in the layout as they should lie on the same plane. The Irrelevant vertexes which exclude the two vertexes lie on the moving edge stay as close to their original location as well. Figure~\ref{fig:editing} shows one example of 3D editing.}}
 
 \begin{figure}
 	\centering

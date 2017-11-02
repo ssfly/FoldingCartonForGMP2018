@@ -85,11 +85,12 @@ For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be m
 %if these two points $\mathbf{v}_p$, $\mathbf{v}_q$ need to be moved into the same place. 
 
 \paragraph{Face pasting} \cxj{check if this is right. }
-If a smaller face $f_a$ is snapped to a larger face $f_b$, for each vertex $\vn_i$ in the face $f_b$, we have
-\begin{equation} \label{eq:face-paste}
-\vn_i \cdot \mathbf{n}_a = 0,
-\end{equation}
-where $\mathbf{n}_a$ is the normal of the face $f_a$.
+%If a smaller face $f_a$ is snapped to a larger face $f_b$, for each vertex $\vn_i$ in the face $f_b$, we have
+%\begin{equation} \label{eq:face-paste}
+%\vn_i \cdot \mathbf{n}_a = 0,
+%\end{equation}
+%where $\mathbf{n}_a$ is the normal of the face $f_a$.
+{\color{blue}{If two faces $f_a$ and $f_b$ need to snap together, the whole vertexes of these two faces should satisfy coplanarity constrain.}}
 
 
 When the above constrains still lead to an ill-posed problem, soft constraints will be added to keep the original positions of the vertexes that are not relative to the shape modification. 
