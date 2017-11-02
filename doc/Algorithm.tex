@@ -102,6 +102,11 @@ We add these soft constraints by adding a small weight $w$, which is set 0.001 i
 \label{equ:irrelevant}
 \end{equation}
 
+Combining the above constraints, the new vertex locations can be solved using the \cxj{XX method, cite the paper.}
+%
+Figure~\ref{fig:shaperefinement} shows two examples of shape refinement by merging three vertexes and pasting two faces respectively. 
+
+\comments{
 \cxj{My suggestion on Figure 4: (a)(b) 3D shape before/after vertex merging, highlight the vertexes. (c)(d) 3D shape before/after face pasting.}
 
 Figure~\ref{fig:constrain} illustrates the necessity of basic three constrains.
@@ -114,4 +119,19 @@ Figure~\ref{fig:constrain} illustrates the necessity of basic three constrains.
 	\caption{Given an initial shape~(a), by merging the three vertexes marked in red~(b), basic three shape constrains can lead to the optimization result~(c). The bottom three are the results optimized lack of edge length constraint, coplanarity and face rigidity separately, compared to~(c), the results can not keep the basic shape well. Without edge length constrain, the two red edges have been stretched (d), the face surrounded by red lines (e) is not a standard plane without coplanarity, and the face surrounded by red lines in (f) has been deformed without face rigidity.}
 	\label{fig:constrain}
 \end{figure}
+}
 
+
+\begin{figure}
+	\centering
+	\subfigure[Vertex Merging]{
+		\includegraphics[width=0.45\columnwidth]{images/vertexMergingBA.png}
+		\label{fig:vertexmergingBeforeAfter}
+	}
+	\subfigure[Face Pasting]{
+		\includegraphics[width=0.45\columnwidth]{images/faceMergingBA.png}
+		\label{fig:facemergingBeforeAfter}
+	}
+	\caption{3D shape refinement based on merging vertexes (a), or pasting faces (b). The locations where the 3D shape changes are highlighted in blue.  }
+	\label{fig:shaperefinement}
+\end{figure}
