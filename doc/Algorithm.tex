@@ -9,7 +9,7 @@ In this section, we explain our algorithm in detail.
 Initially, assume that the 2D layout $\mathcal{L}$ lies on the $XOY$ plane, so that each vertex $\mathbf{v}_i(x_i,y_i,z_i)$ in $V$ has $z_i=0$. 
 Each face in $F$ has a normal $\mathbf{n}_i=(0,0,1)^T$.
 %
-In the first step of our algorithm, our system automatically {\color{blue}{folds the original flat mesh into a rough model by assigning a specific angle to each folding edge.}}
+In the first step of our algorithm, our system automatically folds the original flat mesh into a rough model by assigning a specific angle to each folding edge.
 %computes the normal of the desired 3D carton based simple rules of orthogonality and parallelism.
 In the second step, the carton shape is refined based on a set of potential geometric constraints.
 
@@ -27,7 +27,7 @@ To further refine the 3D shape, the 3D coordinates of all the vertexes are then 
 %Moreover, with the extra information acquired from user interaction, we can finally construct the desired 3D realization.
 In this step, the coordinate of vertexes are chosen as our objective instead of angles on folding edges, mainly because that the geometric constrains in 3D shapes can be more simply and intuitively represented by 3D vertexes.
 % and we can implement the algorithm introduced by Bouaziz et al. easily~\cite{Bouaziz:2012:SSD:2346796.2346802}.
- 
+
 
 %\subsection{Aided Detection}
 
@@ -38,7 +38,7 @@ Once the user selects a suggested shape refinement operation, we optimize the 3D
 %We now introduce the constrains used in our construction method:
 Given the current mesh whose vertex positions are defined as $\{\vo_i\}^{N}_{i=1}$, a new mesh with the same topology but new vertex positions $\{\vn_i\}^{N}_{i=1}$ is constructed.
 %
-The geometric constraints can be classified into two groups, \cxj{shape rigidity constraints and shape modification constraints}.
+The geometric constraints can be classified into two groups, shape rigidity constraints and shape modification constraints.
 % 
 First, to keep the rigidity of each face, the constraints including face rigidity and coplanarity, which are corresponding to similarity constraint and plane constraint described in \cite{Bouaziz:2012:SSD:2346796.2346802}. 
 %
@@ -69,12 +69,26 @@ Each face keeps its shape unchanged during folding. This constraint is defined b
 
 
 \paragraph{Coplanarity} {For each face in  $\{f_k\}_{k=1,\dots,P}$, the coplanarity constraint specifies all vertexes in a face should always lie on a plane. 
-We can compute the sorted eigenvectors $\mathbf{U} = [\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ of the $ 3 \times 3$ covariance matrix $\mathbf{C}^T\mathbf{C}$ where $\mathbf{C} = \{\mathbf{v}_{kj}\}_{j=1}^{N_k}$, $\mathbf{v}_{kj}$ is the $j$th vertex among $N_k$ vertexes in the face. {\color{blue}{By removing the last column of $\mathbf{U}$, we can implement plane projection as \cite{Bouaziz:2012:SSD:2346796.2346802} described. }}
+We can compute the sorted eigenvectors $\mathbf{U} = [\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ of the $ 3 \times 3$ covariance matrix $\mathbf{C}^T\mathbf{C}$ where $\mathbf{C} = \{\mathbf{v}_{kj}\}_{j=1}^{N_k}$, $\mathbf{v}_{kj}$ is the $j$th vertex among $N_k$ vertexes in the face. By removing the last column of $\mathbf{U}$, we can implement plane projection as \cite{Bouaziz:2012:SSD:2346796.2346802} described.
 
 
 If a set of shape modification operations, such as vertex merging and face pasting, are selected, more constraints are added to optimization vertex positions. 
 %
 %and one of the interaction is to choose the right given suggestion including points needed to be merged together. As for the point information, the constrains can be written like:
+
+\begin{figure}
+	\centering
+	\subfigure[Vertex Merging]{
+		\includegraphics[width=0.45\columnwidth]{images/vertexmerging}
+		\label{fig:vertexmergingBeforeAfter}
+	}
+	\subfigure[Face Pasting]{
+		\includegraphics[width=0.45\columnwidth]{images/facemerging}
+		\label{fig:facemergingBeforeAfter}
+	}
+	\caption{3D shape refinement based on merging vertexes (a), or pasting faces (b). The locations where the 3D shape changes are highlighted in blue.  }
+	\label{fig:shaperefinement}
+\end{figure}
 
 \paragraph{Merging vertexes} 
 For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be merged as the same vertex, we have 
@@ -84,13 +98,13 @@ For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be m
 \end{equation}
 %if these two points $\mathbf{v}_p$, $\mathbf{v}_q$ need to be moved into the same place. 
 
-\paragraph{Face pasting} \cxj{check if this is right. }
+\paragraph{Face pasting}
 %If a smaller face $f_a$ is snapped to a larger face $f_b$, for each vertex $\vn_i$ in the face $f_b$, we have
 %\begin{equation} \label{eq:face-paste}
 %\vn_i \cdot \mathbf{n}_a = 0,
 %\end{equation}
 %where $\mathbf{n}_a$ is the normal of the face $f_a$.
-{\color{blue}{If two faces $f_a$ and $f_b$ need to snap together, the whole vertexes of these two faces should satisfy the coplanarity constrain.}}
+If two faces $f_a$ and $f_b$ need to snap together, the whole vertexes of these two faces should satisfy the coplanarity constrain.
 
 
 When the above constrains still lead to an ill-posed problem, soft constraints will be added to keep the original positions of the vertexes that are not relative to the shape modification. 
@@ -102,9 +116,9 @@ We add these soft constraints by adding a small weight $w$, which is set 0.001 i
 \label{equ:irrelevant}
 \end{equation}
 
-Combining the above constraints, the new vertex locations can be solved \cxj{XX method, cite the paper.}{\color{blue}{by minimizing the proximity function based on projection operators\cite{Bouaziz:2012:SSD:2346796.2346802}.}}
+Combining the above constraints, the new vertex locations can be solved by minimizing the proximity function based on projection operators\cite{Bouaziz:2012:SSD:2346796.2346802}.
 %
-Figure~\ref{fig:shaperefinement} shows two examples of shape refinement by merging three vertexes and pasting two faces respectively. 
+Figure~\ref{fig:shaperefinement} shows two examples of shape refinement by merging three vertexes and pasting three faces respectively. 
 
 \comments{
 \cxj{My suggestion on Figure 4: (a)(b) 3D shape before/after vertex merging, highlight the vertexes. (c)(d) 3D shape before/after face pasting.}
@@ -120,18 +134,3 @@ Figure~\ref{fig:constrain} illustrates the necessity of basic three constrains.
 	\label{fig:constrain}
 \end{figure}
 }
-
-
-\begin{figure}
-	\centering
-	\subfigure[Vertex Merging]{
-		\includegraphics[width=0.45\columnwidth]{images/vertexMergingBA.png}
-		\label{fig:vertexmergingBeforeAfter}
-	}
-	\subfigure[Face Pasting]{
-		\includegraphics[width=0.45\columnwidth]{images/faceMergingBA.png}
-		\label{fig:facemergingBeforeAfter}
-	}
-	\caption{3D shape refinement based on merging vertexes (a), or pasting faces (b). The locations where the 3D shape changes are highlighted in blue.  }
-	\label{fig:shaperefinement}
-\end{figure}

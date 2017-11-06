@@ -20,7 +20,7 @@ While a user edits the carton model in 3D space, which is more intuitive, our sy
 Our system automatically detects a group of potential shape constraints to improve the 3D carton model.
 %
 These guiding constraints are provided to the user for quickly selecting and manipulating the carton shape.
-In our system, \cxj{three} types of shape refinement operations, vertex merging, merging propagation, and face pasting, are automatically detected.
+In our system, three types of shape refinement operations, vertex merging, merging propagation, and face pasting, are automatically detected.
 
 %
 %In order to assist users construct the final carton interactively, we also provide symmetry detection and merging points detection to improve the efficiency of constructing models .
@@ -51,12 +51,12 @@ Two vertexes $\vn_a$ and $\vn_b$ are defined as corresponding vertexes if they h
 	 	\label{fig:suggestion:b} %% label for second subfigure
 	 	\includegraphics[width=0.3\textwidth]{images/suggestionb.pdf}}
 	 \hfill
-	 \subfigure[{\color{blue}{Face Pasting}}]{
+	 \subfigure[{Face Pasting}]{
 	 	\includegraphics[width=0.3\textwidth]{images/suggestionc.pdf}
 	 	\label{fig:facepasting}
 	 	}
 	 
-	 \caption{Three different suggestions on shape modification. (a) A group of vertexes (marked in red) are detected as mergeable. $\mathbf{v}_a$ and $\mathbf{v}_b$ are close to each other and one edge connecting to $\mathbf{v}_a$ has the same length with one edge connecting to $\mathbf{v}_b$ (green edges). $\mathbf{v}_c$ is also considered to be merged with $\mathbf{v}_a$ and $\mathbf{v}_b$ because $\mathbf{v}_c$ is close to $\mathbf{v}_b$ and one edge of $\mathbf{v}_c$ has the same length as $\mathbf{v}_b$ (blue edges). (b) Once the user confirms a suggested vertex merging operation, our system automatically proposes a symmetric group of vertexes that can be also merged (marked in blue). (c) (If a small face is close to a larger face and \cxj{share an edge in the same length (marked in red)?}, our system suggests the two faces can be sticked together.) {\color{blue}{If faces marked in red are detected close to each other and the same with their normals, our system suggests these faces can be sticked together.}}}
+	 \caption{Three different suggestions on shape modification. (a) A group of vertexes (marked in red) are detected as mergeable. $\mathbf{v}_a$ and $\mathbf{v}_b$ are close to each other and one edge connecting to $\mathbf{v}_a$ has the same length with one edge connecting to $\mathbf{v}_b$ (green edges). $\mathbf{v}_c$ is also considered to be merged with $\mathbf{v}_a$ and $\mathbf{v}_b$ because $\mathbf{v}_c$ is close to $\mathbf{v}_b$ and one edge of $\mathbf{v}_c$ has the same length as $\mathbf{v}_b$ (blue edges). (b) Once the user confirms a suggested vertex merging operation, our system automatically proposes a symmetric group of vertexes that can be also merged (marked in blue). (c) If faces marked in red are detected close to each other and the same with their normals, our system suggests these faces can be sticked together.}
 	 \label{fig:suggestion}
 \end{figure}
 
@@ -75,7 +75,7 @@ Two vertexes $\vn_a$ and $\vn_b$ are defined as corresponding vertexes if they h
 
 \comments{Take Figure~\ref{fig:suggestion} (b) as an example, after users selecting vertexes circled in red, our system can automatically detect their symmetric set circled in blue. As an result, our system can detect these symmetry pairs to assist users improve efficiency.}
 
-\paragraph{Face Pasting.} Merging vertexes sometimes are not enough to generate desired model caused by the paste faces as shown in Figure~\ref{fig:facepasting}. A pair of faces $f_a$ and $f_b$ is considered mergable if their normals $\mathbf{n}_a$ and $\mathbf{n}_b$ satisfy $\mathbf{n}_a \cdot \mathbf{n}_b > 0.5$, and for each vertex in $\{\mathbf{v}_{ai}\}_{i=1}^{N_a}$,  $|\mathbf{v}_{ai} - \mathbf{v}_{c}^b| < \epsilon_d$, where $\mathbf{v}_{c}^b$ is the centroid of face $f_b$. When involving multiple faces, the detection strategy is same with vertex merging. (Figure needs modification.)
+\paragraph{Face Pasting.} Merging vertexes sometimes are not enough to generate desired model caused by the paste faces as shown in Figure~\ref{fig:facepasting}. A pair of faces $f_a$ and $f_b$ is considered mergable if their normals $\mathbf{n}_a$ and $\mathbf{n}_b$ satisfy $\mathbf{n}_a \cdot \mathbf{n}_b > 0.5$, and for each vertex in $\{\mathbf{v}_{ai}\}_{i=1}^{N_a}$,  $|(\mathbf{v}_{ai} - \mathbf{v}_{c}^b) \cdot \mathbf{n}_b| < \epsilon_d$, where $\mathbf{v}_{c}^b$ is the centroid of face $f_b$, and $\mathbf{n}_b$ is the normal. When involving multiple faces, the detection strategy is same with vertex merging. 
 
 
 
@@ -83,14 +83,14 @@ Two vertexes $\vn_a$ and $\vn_b$ are defined as corresponding vertexes if they h
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/facepaste.jpg}
-	\caption{The initialization result (b) of hexagonal box layout (a) can not reach an ideal state by merging vertexes, hence our system allow users to select merging faces which are bounded by red lines (b) and enforce planarity to the model, the result is shown by assigning same color to the coplane faces (c). \cxj{merge this with figure 5?} }
+	\caption{The initialization result (b) of hexagonal box layout (a) can not reach an ideal state by merging vertexes, hence our system allow users to select merging faces which are bounded by red lines (b) and enforce planarity to the model, the result is shown by assigning same color to the coplane faces (c).}
 	\label{fig:facepaste}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/editing.jpg}
-	\caption{A standard cuboid carton (b) can be generated by the layout (a). Users are allowed to edit the shape of 3D model by dragging the edges, then the model will be deformed to a novel carton (c), by enforce the constrains to layout, our system can generate a deformable layout automatically as (d) shows. \cxj{show two examples.}}
+	\caption{A standard cuboid carton (b) can be generated by the layout (a). Users are allowed to edit the shape of 3D model by dragging the edges, then the model will be deformed to a novel carton (c), by enforce the constrains to layout, our system can generate a deformable layout automatically as (d) shows.}
 
 \end{figure}
 }
@@ -98,29 +98,27 @@ Two vertexes $\vn_a$ and $\vn_b$ are defined as corresponding vertexes if they h
 
 \subsection{2D Layout Refinement from 3D Editing}
 
-\xjmd{While it is significantly efficient to generate a 3D carton using our approach from an existing layout, our system allows users to creatively edit the current 3D carton model and simultaneously refine the 2D layout automatically according to the 3D editing.}
-(A set of user interaction tools are provided, including \cxj{dragging a vertex, moving an edge, and extruding a face.} )
+While it is significantly efficient to generate a 3D carton using our approach from an existing layout, our system allows users to creatively edit the current 3D carton model by moving an edge and simultaneously refine the 2D layout automatically according to the 3D editing.
 
-When the 3D mesh changes, the new shape constraints are transferred to the 2D layouts by keeping face rigidity (Eq.~\ref{  equ:plane}). 
-\cxj{what about the merged vertexes? you can not use the vertex merging.. }.{\color{blue}{do not need}}
+When the 3D mesh changes, the new shape constraints are transferred to the 2D layouts by keeping face rigidity (Eq.~\ref{equ:plane}).
 Since the layout remains in a 2D plane, the coplanarity is enforced for all the vertexes in the layout. 
 %
 % 
 The irrelevant vertexes that do not lie on the moving edge have to stay at their original locations, as described in Eq.~\ref{equ:irrelevant}.
-Figure~\ref{fig:editing} shows \cxj{two examples} of automatic layout refinement from 3D editing.                                                                     
+Figure~\ref{fig:editing} shows two examples of automatic layout refinement from 3D editing.                                                                     
 
 \begin{figure}
 	\centering
 	\subfigure[]{
-		\includegraphics[width=0.45\textwidth]{images/3dEditA.png}
+		\includegraphics[width=0.45\textwidth]{images/editing1}
 		\label{fig:editing1}
 	}
 	\hfill
 	\subfigure[]{
-		\includegraphics[width=0.45\textwidth]{images/3dEditA.png}
+		\includegraphics[width=0.45\textwidth]{images/editing2}
 		\label{fig:editing2}
 	}
-	\caption{Two examples of layout modification from 3D model editing. For each example, a box-like carton can be generated from the given 2D layout. Users can edit the shape of the 3D carton by dragging edges in our system. By enforce the shape rigidity constrains, our system automatically updates the 2D layout. \cxj{The modified faces are highlighted in both 2D and 3D. } }
+	\caption{Two examples of layout modification from 3D model editing. For each example, a box-like carton can be generated from the given 2D layout. Users can edit the shape of the 3D carton by dragging edges in our system. By enforce the shape rigidity constrains, our system automatically updates the 2D layout.}
 	\label{fig:editing}
 \end{figure}
 
