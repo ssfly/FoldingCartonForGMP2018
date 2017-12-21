@@ -1,15 +1,18 @@
 \section{Introduction}
 
-Cartons have been widely used in the packaging industry to organize, ship and deliver various commodities including food, daily necessities and electronic components. Instead of the very basic packaging shapes like cuboids, there exist multiple fantastic cartons to package wedding candies or take-away coffee cups. 
+Cartons have been widely used in the packaging industry to organize, ship and deliver various commodities including food, daily necessities and electronic components. Instead of the very basic packaging shapes like cuboids, there exist multiple fantastic cartons to package wedding candies or wine bottles. 
 These various designs increase much popularity, not to mention they are environmental friendly due to their recycling and degradability~\cite{Mullineux:2010:CSC:1739328.1739673}.
 
-Cartons are usually designed based on experience and trial-and-error, and have expanded to multiple shapes and functions. In recent years, there are software packages developed to help designers improve efficiency and productivity.
+Cartons are usually designed based on experience and trial-and-error.
+{\color{red}{Designers often start package design by generating 2D vector artwork, then a 3D mockup is essential to be made for designers and clients to see the real appearance. There are two ways to create a 3D mockup, a digital mockup is a great way of showing how the design would appear with lower cost, and a practical mockup can be helpful when making sure the size is correct and making final decision.}}
+
+In recent years, there are software packages developed help designers improve efficiency and productivity.
 For example, KASEMAKE~\cite{KASEMAKE} can help users edit existing structural designs from a database by feed in the required size and materials.
+{\color{red}{However, the existing softwares can not generate 3D model from 2D layout with little time and effort.}}
+%Researchers have also studied in obtaining 2D layouts from unfolding 3D objects for decades. However, the unfolded layouts are fragile in some parts which are not suitable for fabrication~\cite{Tai2004Unfolding} and sometimes are not feasible to fold.
+In order to design a practical layout and explore its diversity, our idea is to fold the existing layout directly into 3D model, and by manipulating the corresponding model to reach a diverse layout.
 
-Researchers have also studied in obtaining 2D layouts from unfolding 3D objects. However, the unfolded layouts are fragile in some parts which are not suitable for fabrication~\cite{Tai2004Unfolding} and sometimes are not feasible to fold.
-In order to design a practical layout and explore its diversity, our idea is to fold the layout into 3D model, and by manipulating the corresponding model to reach a diverse layout.
-
-However, based on given planar layout of a carton only, it is nontrivial to formulate the problem of 3D model construction mathematically, because the information extracted from the 2D layout such as edge length and vertex degree does not contain the topology of its corresponding model in space, and may cause ambiguities on account of repeated edges and vertexes. Moreover, Biedl et al. proved that given a polygon and a set of creases, it is NP-hard to know whether a polyhedron can be obtained by folding along the creases~\cite{Biedl:2005:NFP:1090462.1646553}, which can also illustrate the difficulty of our problem in some way.
+However, based on given planar layout of a carton only, it is nontrivial to formulate the problem of 3D model construction mathematically, because the information extracted from the 2D layout such as edge length and vertex degree may cause ambiguities on account of repeated edges and vertexes. Moreover, Biedl et al.~\cite{Biedl:2005:NFP:1090462.1646553} proved that given a polygon and a set of creases, it is NP-hard to know whether a polyhedron can be obtained by folding along the creases, which can also illustrate the difficulty of our problem in some way.
 
 \begin{figure}
 	\centering
@@ -30,10 +33,10 @@ However, based on given planar layout of a carton only, it is nontrivial to form
  
  
 In order to solve the folding cartons just from 2D layouts, we solve a optimization problem given on  set of shape constraints.
-Moreover, an interactive design and exploration framework is developed to allow users to visualize the structural designs in a 3D view, which can improve the efficiency a lot when designing a complicated paper package. Figure~\ref{fig:artist} shows our folding results based on the layouts designed by artists. 
+Moreover, an interactive design and exploration framework is developed to allow users to visualize the planar layouts and the corresponding model in a 3D view, and edit the 3D model freely. Figure~\ref{fig:artist} shows our folding results based on the layouts designed by artists. 
 
 The contribution of this paper includes the following:
 
 (1) An interactive and explorative system to manipulate the shape of 3D carton: It creates the corresponding 3D realization by initialization and user interaction, and users are allowed to edit the 3D model to explore deformed layouts automatically.
 
-(2) A collection of shape constraints represented through a set of points to implement shape optimization: Observed from existing cartons, constraints are summarized including face rigidity and coplanarity to keep the shape of cartons. Besides, computer-aid detection like vertex merging and symmetry detection are brought to give users suggestions. 
+(2) A collection of shape constraints represented through a set of points to implement shape optimization: Observed from existing cartons, constraints are summarized including face rigidity and coplanarity to keep the shape of cartons. Besides, computer-aid detection like vertex merging and face pasting are brought to give users suggestions. 

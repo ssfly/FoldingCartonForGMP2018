@@ -32,17 +32,17 @@ In this step, the coordinate of vertexes are chosen as our objective instead of 
 %\subsection{Aided Detection}
 
 %While the initial 3D model with simple angle folding provides a rough idea about the carton shape, 
-A suggestive interface is provided to users for efficiently explore better carton shapes, as described later in Sec.~\ref{sec:interaction}. 
+A suggestive interface is provided to users for efficiently exploring better carton shapes, as described later in Sec.~\ref{sec:interaction}. 
 %
 Once the user selects a suggested shape refinement operation, we optimize the 3D shape based on a series of geometric constraints.
 %We now introduce the constrains used in our construction method:
-Given the current mesh whose vertex positions are defined as $\{\vo_i\}^{N}_{i=1}$, a new mesh with the same topology but new vertex positions $\{\vn_i\}^{N}_{i=1}$ is constructed.
+Given the current mesh whose vertex positions are defined as $\{\vo_i\}^{N}_{i=1}$, a new mesh with the same topology but new vertex positions $\{\vn_i\}^{N}_{i=1}$ will be  constructed.
 %
 The geometric constraints can be classified into two groups, shape rigidity constraints and shape modification constraints.
 % 
 First, to keep the rigidity of each face, the constraints including face rigidity and coplanarity, which are corresponding to similarity constraint and plane constraint described in \cite{Bouaziz:2012:SSD:2346796.2346802}. 
 %
-Second, once two vertexes or two faces are confirmed to be merged to modify the rough shape, more constraints are added. 
+Second, once vertexes or faces are confirmed to be merged to modify the rough shape, more constraints are added. 
 %
 Each constraint is defined as following.  
 
