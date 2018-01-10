@@ -90,7 +90,7 @@ If a set of shape modification operations, such as vertex merging and face pasti
 	\label{fig:shaperefinement}
 \end{figure}
 
-\paragraph{Merging vertexes} 
+\paragraph{Merging vertices} 
 For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be merged as the same vertex, we have 
 \begin{equation}
 \mathbf{v}_p - \mathbf{v}_q = \mathbf{0}.
@@ -104,33 +104,33 @@ For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be m
 %\vn_i \cdot \mathbf{n}_a = 0,
 %\end{equation}
 %where $\mathbf{n}_a$ is the normal of the face $f_a$.
-If two faces $f_a$ and $f_b$ need to snap together, the whole vertexes of these two faces should satisfy the coplanarity constrain.
+If two faces $f_a$ and $f_b$ need to snap together, the whole vertexes of these two faces should satisfy the coplanarity constrain.\\
 
 
-When the above constrains still lead to an ill-posed problem, soft constraints will be added to keep the original positions of the vertexes that are not relative to the shape modification. 
+%When the above constrains still lead to an ill-posed problem, soft constraints will be added to keep the original positions of the vertices that are not relative to the shape modification. 
 
-\paragraph{Irrelevant vertexes} For the vertexes $\{\mathbf{v}_i\}$ are not in the same plane with any vertex for merging or face pasting, they should stay at their original location. 
+\reply{In order to reduce the solution space of the optimization problem,} soft constraints will be added to keep the original positions of the vertices that are not relative to the shape modification.
+
+\paragraph{Irrelevant vertexes} For the vertices $\{\mathbf{v}_i\}$ are not in the same plane with any vertex for merging or face pasting, they should stay at their original location. 
 We add these soft constraints by adding a small weight $w$, which is set 0.001 in our experiments to the following equation. 
 \begin{equation}
 \mathbf{v}_i - \mathbf{\hat{v}}_i = 0.
 \label{equ:irrelevant}
 \end{equation}
 
-Combining the above constraints, the new vertex locations can be solved by minimizing the proximity function based on projection operators\cite{Bouaziz:2012:SSD:2346796.2346802}.
+Combining the above constraints, the new vertex locations can be solved by minimizing the proximity function based on projection operators\cite{Bouaziz:2012:SSD:2346796.2346802}. \reply{For a single point $\mathbf{v}$, the proximity function is defined as
+\begin{equation}
+\phi(\mathbf{v}) = \sum_{i=1}^{m}\omega_i{d_i(\mathbf{v})}^{2},
+\label{equ:function}
+\end{equation}
+where $\omega_i$ are non-negative weights, and $d_i$ is the distance between the point $\mathbf{v}$ and its projection onto the constraint set, $m$ is the number of constraints. For all the vertices $\mathbf{V} = \{\mathbf{v}_i\}_{i=1\dots n}$, the shape proximity function is formulated as
+\begin{equation}
+\phi(\mathbf{V}) = \sum_{i=1}^{m}\omega_i||\mathbf{N}_i\mathbf{V}_i-P_i(\mathbf{N}_i\mathbf{V}_i)||_2^2,
+\label{equ:function2}
+\end{equation}
+where $\omega_i$ are weights and $P_i(\cdot)$ is the projection onto the constraint. The matrix $\mathbf{N}_i$ is used to center the vertices at their mean.
+}
+
 %
 Figure~\ref{fig:shaperefinement} shows two examples of shape refinement by merging three vertexes and pasting three faces respectively. 
 
-\comments{
-\cxj{My suggestion on Figure 4: (a)(b) 3D shape before/after vertex merging, highlight the vertexes. (c)(d) 3D shape before/after face pasting.}
-
-Figure~\ref{fig:constrain} illustrates the necessity of basic three constrains.
-\cxj{More detailed explaination on the figure. Explain the three constraints in the figure.}
-{\color{blue}{When we merge three vertexes circled in red Figure~\ref{fig:constrain} (b) into one location, the optimized model is generated under basic constraints shown in Figure~\ref{fig:constrain}}. The model shown in Figure~\ref{fig:constrain} (d) (e) and (f) are the results after optimizing without edge length constrain, coplanarity and face rigidity constrain separately. Without edge length constrain, the two red edges have been stretched Figure~\ref{fig:constrain} (d), the face surrounded by red lines Figure~\ref{fig:constrain} (e) is not a standard plane without coplanarity, and the face surrounded by red lines in Figure~\ref{fig:constrain} (f) has been deformed without face rigidity.}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{images/constrain.jpg}
-	\caption{Given an initial shape~(a), by merging the three vertexes marked in red~(b), basic three shape constrains can lead to the optimization result~(c). The bottom three are the results optimized lack of edge length constraint, coplanarity and face rigidity separately, compared to~(c), the results can not keep the basic shape well. Without edge length constrain, the two red edges have been stretched (d), the face surrounded by red lines (e) is not a standard plane without coplanarity, and the face surrounded by red lines in (f) has been deformed without face rigidity.}
-	\label{fig:constrain}
-\end{figure}
-}
