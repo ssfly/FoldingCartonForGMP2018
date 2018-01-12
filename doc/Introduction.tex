@@ -4,7 +4,7 @@ Cartons have been widely used in the packaging industry to organize, ship and de
 These various designs increase much popularity, not to mention they are environmental friendly due to their recycling and degradability~\cite{Mullineux:2010:CSC:1739328.1739673}.
 
 Cartons are usually designed based on experience and trial-and-error.
-\reply{Designers often start package design by generating 2D vector artwork, then a 3D mockup is essential to be made for designers and clients to see the real appearance. There are two ways to create a 3D mockup, a digital mockup is a great way of showing how the design would appear with lower cost, and a practical mockup can be helpful when making sure the size is correct and making final decision.}
+\reply{Designers often start package design by generating 2D vector artwork, then a 3D mockup is essential to be made for designers and clients to see the real appearance. There are two ways to create a 3D mockup, a digital mockup is a great way of showing how the design would appear with lower cost, and convenient for designers to modify layouts repeatedly. A physical mockup is also helpful when making sure the size is correct and making final decision~\cite{guide}.}
 
 In recent years, there are software packages developed help designers improve efficiency and productivity.
 %For example, KASEMAKE~\cite{KASEMAKE} can help users edit existing structural designs from a database by feed in the required size and materials.
@@ -33,11 +33,11 @@ However, based on given planar layout of a carton only, it is nontrivial to form
 %In this paper, we focus on the carton folding problem and introduce an interactive shape optimization method.
  
  
-In order to solve the folding cartons just from 2D layouts, we solve a optimization problem given on  set of shape constraints.
-Moreover, an interactive design and exploration framework is developed to allow users to visualize the planar layouts and the corresponding model in a 3D view, and edit the 3D model freely. Figure~\ref{fig:artist} shows our folding results based on the layouts designed by artists. 
+In order to solve the folding cartons using 2D layouts as our only input, we solve a optimization problem given on a set of shape constraints.
+Moreover, an interactive design and exploration framework is developed to allow users to visualize the planar layouts and the corresponding model in a 3D view, and edit the 3D model freely. The original layout can be corrected and explored by optimization. Figure~\ref{fig:artist} shows our folding results based on the layouts designed by artists. 
 
 The contribution of this paper includes the following:
 
-(1) An interactive and explorative system to manipulate the shape of 3D carton: It creates the corresponding 3D realization by initialization and user interaction, and users are allowed to edit the 3D model to explore deformed layouts automatically.
+(1) An interactive and explorative system to manipulate the shape of 3D carton: It creates the corresponding 3D realization by initialization and user interaction, and modify imprecise layouts by optimization. Users are also allowed to edit the 3D model to explore deformed layouts automatically.
 
 (2) A collection of shape constraints represented through a set of points to implement shape optimization: Observed from existing cartons, constraints are summarized including face rigidity and coplanarity to keep the shape of cartons. Besides, computer-aid detection like vertex merging and face pasting are brought to give users suggestions. 
