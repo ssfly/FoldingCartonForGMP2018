@@ -47,7 +47,7 @@ Hence, its two endpoints $\mathbf{v}_{js}$ and end point $\mathbf{v}_{jt}$ shoul
 \paragraph{Face rigidity} 
 Each panel keeps its shape unchanged during folding. This constraint is defined by keeping the length of each line connecting any pair of points $\mathbf{v}_{a}, \mathbf{v}_{b}$ on the panel the same.
 \begin{equation}
-||\mathbf{v}_{a} - \mathbf{v}_{b}||^2 = ||\hat{\mathbf{v}}_{a} - \hat{\mathbf{v}}_{b}||^2.
+||\mathbf{v}_{a} - \mathbf{v}_{b}||^2 - ||\hat{\mathbf{v}}_{a} - \hat{\mathbf{v}}_{b}||^2 = \mathbf{0}.
 \label{equ:plane}
 \end{equation}
 
@@ -100,11 +100,11 @@ If two panels $P_a$ and $P_b$ need to snap together, the whole vertexes of these
 \paragraph{Irrelevant vertexes} For the vertexes $\{\mathbf{v}_i\}$ are not in the same plane with any vertex for merging or panel pasting, they should stay at their original location. 
 We add these soft constraints by adding a small weight $w$, which is set 0.001 in our experiments to the following equation. 
 \begin{equation}
-\mathbf{v}_i - \mathbf{\hat{v}}_i = 0.
+\mathbf{v}_i - \mathbf{\hat{v}}_i = \mathbf{0}.
 \label{equ:irrelevant}
 \end{equation}
 
-\reply{\cite{Bouaziz:2012:SSD:2346796.2346802} proposed an efficient optimization method that could combines all these shape constraints together... ? We directly use their software ....to solve our .. once a shape modification operation is performed.}
+\reply{\cite{Bouaziz:2012:SSD:2346796.2346802} proposed an efficient optimization method that could combines all these shape constraints together. We directly use their software ShapeOp to solve our constraint optimization problem once a shape modification operation is performed.}
 Figure~\ref{fig:shaperefinement} shows two examples of shape refinement by merging three vertexes and pasting three panels respectively. 
 
 \comments{
