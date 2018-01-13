@@ -58,7 +58,7 @@ Each panel keeps its shape unchanged during folding. This constraint is defined 
 We can compute the sorted eigenvectors $\mathbf{U} = [\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ of the $ 3 \times 3$ covariance matrix $\mathbf{C}^T\mathbf{C}$ where $\mathbf{C} = \{\mathbf{v}_{kj}\}_{j=1}^{N_k}$, $\mathbf{v}_{kj}$ is the $j$th vertex among $N_k$ vertexes in the panel. By removing the last column of $\mathbf{U}$, we can implement plane projection as \cite{Bouaziz:2012:SSD:2346796.2346802} described.
 
 
-If a set of shape modification operations, such as vertex merging and panel pasting, are selected, more constraints are added to optimization vertex positions. 
+If a set of shape modification operations, such as vertex merging and panel pasting, are selected, more constraints are added to optimizing vertex positions. 
 %
 %and one of the interaction is to choose the right given suggestion including points needed to be merged together. As for the point information, the constrains can be written like:
 
@@ -76,7 +76,7 @@ If a set of shape modification operations, such as vertex merging and panel past
 	\label{fig:shaperefinement}
 \end{figure}
 
-\paragraph{Merging Vertexes} 
+\paragraph{Merging vertexes} 
 For any two vertexes $\mathbf{v}_p$ and $\mathbf{v}_q$ that are selected to be merged as the same vertex, we have 
 \begin{equation}
 \mathbf{v}_p - \mathbf{v}_q = \mathbf{0}.
@@ -104,7 +104,7 @@ We add these soft constraints by adding a small weight $w$, which is set 0.001 i
 \label{equ:irrelevant}
 \end{equation}
 
-\reply{\cite{Bouaziz:2012:SSD:2346796.2346802} proposed an efficient optimization method that could combines all these shape constraints together. We directly use their software ShapeOp to solve our constraint optimization problem once a shape modification operation is performed.}
+\reply{\cite{Bouaziz:2012:SSD:2346796.2346802} proposed an efficient optimization method that could combines all these shape constraints together. We directly use their c++ library ShapeOp to solve our constraint optimization problem once a shape modification operation is performed.}
 Figure~\ref{fig:shaperefinement} shows two examples of shape refinement by merging three vertexes and pasting three panels respectively. 
 
 \comments{
