@@ -20,7 +20,7 @@ Moreover, there are many ambiguities when detecting these constraints in a 2D la
 Based on the observation that humans usually fold edges with a right angle to get a rough shape and then merge vertexes or edges to get a stable 3D carton, we propose a two-step algorithm. 
 % Our algorithm consists of two steps. 
 First, an initial 3D model (Figure~\ref{fig:overview}(c)) is constructed based on a specific angle along each folding edge, as described in Sec.~\ref{sec:initialization}.
-The user can then manipulate and explore 3D shapes of the canton based on a series of suggestive operations provided by our system. 
+The user can then manipulate and explore 3D shapes of the carton based on a series of suggestive operations provided by our system. 
 %
 The final model is shown in Figure~\ref{fig:overview}(e).
 Details of each step will be introduced as following. 
@@ -32,7 +32,7 @@ Details of each step will be introduced as following.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/overview}
-	\caption{Given a 2D layout (a), we first extract its 2D mesh (b) with different panels in different color. By providing each folding edge with the same angle which is $\pi/2$, \xjmd{an initial 3D model can be constructed~(c). The final carton model (e) is built by a shape optimization technique based on a series of suggested geometrical constrains} (d).}
+	\caption{Given a 2D layout (a), we first extract its 2D mesh (b) with different panels in different color. By providing each folding edge with the same angle which is $\pi/2$, an initial 3D model can be constructed~(c). The final carton model (e) is built by a shape optimization technique based on a series of suggested geometrical constraints (d).}
 	\label{fig:overview}
 \end{figure} 
  
