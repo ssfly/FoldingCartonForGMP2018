@@ -2,14 +2,14 @@
 
 
 Figure~\ref{fig:overview} shows the overview of our algorithm. 
-As shown in Figure~\ref{fig:overview}(a), the input 2D design layout of a carton consists of a set of cutting edges (solid lines) and folding edges (dashed lines).
+The input 2D design layout of a carton consists of a set of cutting edges (solid lines) and folding edges (dashed lines).
 %
 Given the 2D layout, an undirected graph is built and a set of polygonal panels are extracted by finding the minimum cycles in the graph, as Figure~\ref{fig:overview}(b) shows. 
 %Each face is filled with a unique color. %by ignoring the holes in the plane
 The 2D layout therefore can be represented by a polymesh $\mathcal{L}=(V,E,P)$, where $V$ is the set of vertexes, $E$ is the set of all edges, and $P$ is the set of panels. 
 The edge set $E=E_c\cup E_f$, where $E_c$ is the set of cutting edges, and $E_f$ is the set of folding edges.
 %
-To build a 3D carton model $\mathcal{M}=(V, E, P)$ from the 2D layout $L$, while they share the same topology, we compute the 3D coordinates of all vertexes in $V$. 
+To build a 3D carton model $\mathcal{M}=(V, E, P)$ from the 2D layout $\mathcal{L}$, while they share the same topology, we compute the 3D coordinates of all vertexes in $V$. 
 %
 
 However, it is not intuitive to analytically define the desired final 3D shape from a 2D layout. 
@@ -32,12 +32,8 @@ Details of each step will be introduced as following.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/overview}
-	\caption{Given a 2D layout (a), we first extract its 2D mesh (b) with different panels in different colors. By providing each folding edge with the same angle which is $\pi/2$ based on our observation, we can construct an initial 3D model (c). The final carton model (e) is built through the shape optimization based on the information acquired from user interactions (d).}
+	\caption{Given a 2D layout (a), we first extract its 2D mesh (b) with different panels in different color. By providing each folding edge with the same angle which is $\pi/2$, \xjmd{an initial 3D model can be constructed~(c). The final carton model (e) is built by a shape optimization technique based on a series of suggested geometrical constrains} (d).}
 	\label{fig:overview}
 \end{figure} 
-
-\comments{
-  a flat polymesh $L$ is created from a 2D design layout of a box, then we deform the input polymesh into its 3D realization $R_i$ according to the predicted angles along each of its fold edges, and through optimization, generate final model $R_f$. A polymesh consists of a set of vertexes, edges and faces $M = (V,E,F)$, the number of vertexes $V$, edges $E$ and faces $F $ vary from one mesh to another. However, a pair of $(L,R_f)$ as the 2D layout and its corresponding 3D realization share the same topology and therefore they have the same number of vertexes, edges and faces. A flat mesh as a 2D layout $L$ has its $z$ component of each vertex set to be a constant zero: $X_z(\mathbf{v}) \equiv 0$ where $X = (X_x,X_y,X_z)$ is the vertex coordinate, and its normal of each face set as $(0,0,1)^T$: $\mathbf{n}(f) \equiv (0,0,1)^T$, where $f \in F$.
-}
-
+ 
 

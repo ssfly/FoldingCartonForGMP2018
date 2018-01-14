@@ -31,31 +31,42 @@ In addition, the above works cannot edit corresponding 3D model and optimize its
 %Compared to our desired result, a polyhedron is a set of polygons without overlap, nevertheless, our 3D model contains small faces that needs to be fixed to another panel. 
 %These works above justify our problem being hard to solve caused by even more intricate inputs.
 
-\subsection{Reconstruction from single line drawings}
-\reply{Although with the same goal that constructing 3D models from 2D layouts including vertexes and edges as line drawing reconstruction problem, theres is a one-to-one correspondence in the vertexes between 2D layouts and 3D model in line drawings while ours is many-to-one correspondence and the construction process is actually different.} 
+\subsection{3D reconstruction of line drawings}
+\reply{Although having the same goal of constructing 3D models from 2D layouts including vertexes and edges, there is a one-to-one correspondence between the vertexes in the 2D line drawing and 3D model, while our problem recovers many-to-one correspondences and the 3D construction process is different.} 
 
-A line drawing is defined as a 2D projection of a object containing its vertexes and edges. Line drawings of three-dimensional objects have been studied for a long time, and the main problem is still in object reconstruction given its projection on two-dimensional planes. 
+A line drawing is defined as a 2D projection of a object containing its vertexes and edges. 3D interpretation of line drawings have been studied for a long time. 
+%The main problem is in object reconstruction given its projection on two-dimensional planes. 
 Some researchers treat this task as an optimization problem. 
-Marill~\cite{Marill:1991:EHI:113057.113061} proposed MSDA~(Minimize the Standard Deviation of Angles) principle to emulate the interpretation of line drawings as 3D objects. 
-This new criterion was used by many other researchers later. 
+Marill~\cite{Marill:1991:EHI:113057.113061} first proposed the principle of minimizing the standard deviation (MSDA) of angles to emulate the interpretation of line drawings as 3D objects. 
+%
+This new criterion was used by many other researchers soon after. 
 Leclerc et al.~\cite{Leclerc1992An} combined MSDA with the deviation from planarity as objective terms. 
-Cao et al.~\cite{Cao:2005:ORS:1097114.1097658} added a symmetry measure of the objects to get more complicated results. 
-Some other researchers tried to solve this problem from the information theoretic point of view. 
+Cao et al.~\cite{Cao:2005:ORS:1097114.1097658} added a symmetry metric of 3D objects to get more complicated results. 
+Some other researchers tried to solve this problem from the point of view of information theory.
+%
 Marill~\cite{Marill1992Why} minimized the description length of objects based on the idea that humans usually pick the simplest one from infinite possibilities when they see the line drawing. 
-Shoji et al.~\cite{Shoji20013} implemented the principle of minimizing the entropy of angle distribution between line segments by genetic algorithm. Later, the strategy of splitting and merging has been used to solve line drawings of complex 3D objects~\cite{10.1109/TPAMI.2010.49,10.1109/CVPR.2014.94}.   
+Shoji et al.~\cite{Shoji20013} minimized the entropy of the angle distribution between line segments by a genetic algorithm. 
+Later, the strategy of splitting and merging was used to reconstruct line drawings of complex 3D objects~\cite{10.1109/TPAMI.2010.49,10.1109/CVPR.2014.94}.   
 		 
-Different from the input above, ours is expanded structural layouts of three-dimensional objects in 2D planes, the final model is constructed based on the folding process instead of mathematical presentation.
+Different from line drawings, our input is the expanded structural layouts in 2D planes of 3D carton objects.
+The 3D carton model is constructed based on the folding procedure instead of the mathematical projection from 3D to 2D.
 
-\subsection{Shape optimization}
-\reply{The basic idea of our paper is shape optimization under a set of simple constraints.}
-Multiple algorithms have been proposed to enforce shape constraints, and have been used successfully for interactive tools and physical simulation~\cite{Botsch:2006:PCP:1281957.1281959,Igarashi:2005:ASM:1186822.1073323}. 
-Bouaziz et al.~\cite{Bouaziz:2012:SSD:2346796.2346802} unified a large variety of geometric constraint into one optimization framework, and provided simple and robust implementation. 
+\subsection{Geometrical shape optimization}
+%\reply{The basic idea of our paper is  shape optimization under a set of simple constraints.}
+In geometrical shape processing, many algorithms have been proposed to enforce shape constraints, and have been successfully used in interactive tools and physical simulation~\cite{Botsch:2006:PCP:1281957.1281959,Igarashi:2005:ASM:1186822.1073323}. 
+Bouaziz et al.~\cite{Bouaziz:2012:SSD:2346796.2346802} unified a large variety of geometric constraints into one optimization framework, and provided a simple and robust implementation. 
 Poranne et al.~\cite{Poranne2013Interactive} described an interactive method to manipulate and optimize polyhedral meshes under constraints with a linear-time algorithm. 
+%
 Tang et al.~\cite{Tang:2014:FPM:2601097.2601213} solved constrained equations by Newton-type method in a fast way, and provided an interactive system to model meshes constrained by equalities and inequalities. 
 Deng et al.~\cite{Deng2015} developed an interactive tool to explore architectural design with shape constraints, and provided an optimization method to enforce hard constraints and soft constraints at the same time. 
 
-The studies mentioned above focus on the architectural design with constraints, and proposed different solutions, while they do not have a 2D layout to build correspondence and our constraints do not need satisfy properties like fairness. 
-In our paper, we implement the shape optimization by the method introduced in \cite{Bouaziz:2012:SSD:2346796.2346802} for its robustness and simplicity.
+\xjmd{The studies mentioned above focus on optimizing existing 3D shapes with geometric constraints, and propose different optimization solutions.
+%
+2D layouts are not involved in their problems.
+In contrast, our goal is to recover the structure and topology from an expanded layout to form a 3D carton model.
+The geometric constraints are automatically detected and presented for users to explore during the folding process. }
+%correspondence and our constraints do not need satisfy properties like fairness. 
+%In our paper, we implement the shape optimization by the method introduced in \cite{Bouaziz:2012:SSD:2346796.2346802} for its robustness and simplicity.
 
 
 

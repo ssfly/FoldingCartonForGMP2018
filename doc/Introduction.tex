@@ -4,20 +4,21 @@ Cartons have been widely used in the packaging industry to organize, ship and de
 These various designs increase much popularity, not to mention they are environmental friendly due to their recycling and degradability~\cite{Mullineux:2010:CSC:1739328.1739673}.
 
 Cartons are usually designed based on experience and trial-and-error.
-\reply{Designers often start package design by generating 2D vector artwork, then a 3D mockup is essential to be made for designers and clients to see the real appearance. There are two ways to create a 3D mockup, a digital mockup is a great way of showing how the design would appear with lower cost and convenient for designers to modify layouts repeatedly. A physical mockup is also helpful when making sure the size is correct and making a final decision~\cite{guide}.}
-
-In recent years, there have been software packages developed to help designers improve efficiency and productivity.
-\reply{For example, a commercial software named STUDIO~\cite{STUDIO} can generate 3D models by manually assigning angles to folding edges, and with the model, users can turn their ideas into beautiful 3D images.}
+\reply{Designers typically start package design by generating 2D vector artwork, then a 3D mockup is essential to be made for designers and clients to see the real appearance~\cite{guide}. There are two ways to create a 3D mockup, a digital mockup is a great way of showing how the design would appear with lower cost and convenient for designers to modify the layout repeatedly. A physical mockup is also helpful when making sure the size is correct and making a final decision. 
+%
+Due to the low cost and efficiency of digital mockups, there have been many software packages developed to help designers improve their design efficiency and productivity.
+%
+For example, a commercial software named STUDIO~\cite{STUDIO} can generate 3D models by manually assigning angles to folding edges, and with the model, users can turn their ideas into beautiful 3D images.}
 \reply{However, the existing softwares still need a lot of manual work to design packages.
 %Researchers have also studied in obtaining 2D layouts from unfolding 3D objects for decades. However, the unfolded layouts are fragile in some parts which are not suitable for fabrication~\cite{Tai2004Unfolding} and sometimes are not feasible to fold.
-In order to create a virtual 3D model and explore layouts' diversity,} our idea is to fold the existing layout directly into 3D model, and reach a diverse layout by manipulating the corresponding model.
+In order to create a virtual 3D model and explore layouts' diversity,} our idea is to fold the existing layout directly into a 3D model, and reach a variety of layouts by manipulating the corresponding model.
 
 However, based on the given planar layout of a carton only, it is nontrivial to formulate the problem of 3D model construction mathematically, because the information extracted from the 2D layout such as edge length and vertex degree may cause ambiguities on account of repeated edges and vertexes. Moreover, Biedl et al.~\cite{Biedl:2005:NFP:1090462.1646553} proved that given a polygon and a set of creases, it is NP-hard to know whether a polyhedron can be obtained by folding along the creases, which can also illustrate the difficulty of our problem in some way.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/artist}
-	\caption{Two cartons and their layouts designed by artist, and the corresponding model folded by our system.}
+	\caption{Two cartons and their layouts designed by artists, and the corresponding 3D models folded by our system.}
 	\label{fig:artist}
 \end{figure}
 
@@ -32,11 +33,11 @@ However, based on the given planar layout of a carton only, it is nontrivial to 
 %In this paper, we focus on the carton folding problem and introduce an interactive shape optimization method.
  
  
-In order to solve the folding cartons using 2D layouts as our only input, we present a optimization method given a set of shape constraints.
-Moreover, an interactive design and exploration framework is proposed to allow users to visualize the planar layouts and the corresponding model in a 3D view, and edit the 3D model freely. The original layout can be corrected and explored by optimization. Figure~\ref{fig:artist} shows our folding results based on the layouts designed by artists. 
+In order to solve the folding cartons using 2D layouts as our only input, we present an optimization method given a set of shape constraints.
+Moreover, an interactive design and exploration framework is proposed to allow users to visualize the planar layouts and the corresponding model in a 3D view, and edit the 3D model freely. The original layout can be corrected and explored by optimization. Figure~\ref{fig:artist} shows our folding results based on the 2D layouts designed by artists. 
 
 The contribution of this paper includes the following:
 
-(1) An interactive and explorative system to manipulate the shape of 3D cartons: It creates the corresponding 3D model by initialization and user interaction, and modifies imprecise layouts by optimization. Users are also allowed to edit the 3D model to explore deformed layouts automatically.
+(1) An interactive and explorative system to manipulate the shape of 3D cartons. Our system creates the corresponding 3D model by a rough initialization and user interactions, and modifies imprecise layouts by a geometric optimization. Users are allowed to edit the 3D model to explore deformed layouts automatically.
 
-(2) A collection of shape constraints represented through a set of points to implement shape optimization: Observed from existing cartons, constraints are summarized including face rigidity and coplanarity to keep the shape of cartons. Besides, computer-aid detection like vertex merging and panel pasting is brought to give users suggestions. 
+(2) A collection of shape constraints represented through a set of points to implement shape optimization. Observed from existing cartons, constraints are summarized including panel rigidity and coplanarity to keep the shape of cartons. Besides, computer-aided detection like vertex merging and panel pasting is brought to give users suggestions. 
