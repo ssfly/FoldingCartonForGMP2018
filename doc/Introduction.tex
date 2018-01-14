@@ -9,11 +9,14 @@ Cartons are usually designed based on experience and trial-and-error.
 Due to the low cost and efficiency of digital mockups, there have been many software packages developed to help designers improve their design efficiency and productivity.
 %
 For example, a commercial software named STUDIO~\cite{STUDIO} can generate 3D models by manually assigning angles to folding edges. With the model, users can turn their ideas into beautiful 3D images.}
-\reply{However, the existing softwares still need a lot of manual work to design packages.
+\xjmd{Moreover, it is non-trivial for non-expert users to figure out how to fold a complex carton from a 2D crease pattern only. A digital simulation system will provide valuable references to inspire user creativities~\cite{Thiel1998,Kishi:1998:OFP:786112.786279,Nimnual2007Virtual}. }
+\reply{However, the existing softwares still need a lot of manual work to design cartons.
 %Researchers have also studied in obtaining 2D layouts from unfolding 3D objects for decades. However, the unfolded layouts are fragile in some parts which are not suitable for fabrication~\cite{Tai2004Unfolding} and sometimes are not feasible to fold.
 In order to create a virtual 3D model and explore layouts' diversity,} our idea is to fold the existing layout directly into a 3D model, and reach a variety of layouts by manipulating the corresponding model.
 
-However, based on the given planar layout of a carton only, it is nontrivial to formulate the problem of model construction mathematically, because the information extracted from the 2D layout such as edge length and vertex degree may cause ambiguities on account of repeated edges and vertexes. Moreover, Biedl et al.~\cite{Biedl:2005:NFP:1090462.1646553} proved that given a polygon and a set of creases, it is NP-hard to know whether a polyhedron can be obtained by folding along the creases, which can also illustrate the difficulty of our problem in some way.
+
+It is nontrivial to mathematically formulate the problem of model construction from a planar layout only, because the information extracted from the 2D pattern such as edge length and vertex degree may cause ambiguities on account of repeated edges and vertexes. 
+Moreover, Biedl et al.~\cite{Biedl:2005:NFP:1090462.1646553} proved that given a polygon and a set of creases, it is NP-hard to know whether a polyhedron can be obtained by folding along the creases, which can also illustrate the difficulty of our problem in some way.
 
 \begin{figure}
 	\centering
