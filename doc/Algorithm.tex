@@ -44,7 +44,7 @@ Hence, its two endpoints $\mathbf{v}_{js}$ and end point $\mathbf{v}_{jt}$ shoul
 }
 
 
-\paragraph{Face rigidity} 
+\paragraph{Panel rigidity.} 
 Each panel keeps its shape unchanged during folding. This constraint is defined by keeping the length of each line connecting any pair of points $\mathbf{v}_{a}, \mathbf{v}_{b}$ on the panel the same.
 \begin{equation}
 ||\mathbf{v}_{a} - \mathbf{v}_{b}||^2 - ||\hat{\mathbf{v}}_{a} - \hat{\mathbf{v}}_{b}||^2 = 0.
@@ -58,7 +58,7 @@ Each panel keeps its shape unchanged during folding. This constraint is defined 
 We can compute the sorted eigenvectors $\mathbf{U} = [\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ of the $ 3 \times 3$ covariance matrix $\mathbf{C}^T\mathbf{C}$ where $\mathbf{C} = \{\mathbf{v}_{kj}\}_{j=1}^{N_k}$, $\mathbf{v}_{kj}$ is the $j^{th}$ vertex among $N_k$ vertexes in the panel. By removing the last column of $\mathbf{U}$, we can implement plane projection as \cite{Bouaziz:2012:SSD:2346796.2346802} described.
 
 
-If a set of shape modification operations, such as vertex merging and panel pasting, are selected, more constraints are added to \xjmd{optimize the vertex} positions. 
+If a set of shape modification operations, such as vertex merging and panel pasting, are selected, more constraints are added to optimize the vertex positions. 
 %
 %and one of the interaction is to choose the right given suggestion including points needed to be merged together. As for the point information, the constrains can be written like:
 
@@ -68,6 +68,7 @@ If a set of shape modification operations, such as vertex merging and panel past
 		\includegraphics[width=0.45\columnwidth]{images/vertexmerging}
 		\label{fig:vertexmergingBeforeAfter}
 	}
+	\hfill
 	\subfigure[Panel pasting]{
 		\includegraphics[width=0.45\columnwidth]{images/facemerging}
 		\label{fig:facemergingBeforeAfter}
@@ -98,13 +99,13 @@ If two panels $P_a$ and $P_b$ need to snap together, all the vertexes of these t
 \reply{Typically only a few shape modification operations are selected at each time, the above constraints form an under-constrained system to solve the new vertex coordinates. In order to find a feasible solution for the constrained problem,} soft constraints will be added to keep the original positions of the vertexes that are not relative to the selected shape modification.
 
 \paragraph{Irrelevant vertexes.} For the vertexes not in the same panel with any vertex for merging or panel pasting, they should stay at their original locations. 
-We add these soft constraints by adding a small weight $w$, which is set 0.001 in our experiments to the following equation. 
+We add these soft constraints by adding a small weight $w$, which is set to 0.001 in our experiments to the following equation. 
 \begin{equation}
 w(\mathbf{v}_i - \mathbf{\hat{v}}_i) = \mathbf{0}.
 \label{equ:irrelevant}
 \end{equation}
 
-\reply{\cite{Bouaziz:2012:SSD:2346796.2346802} proposed an efficient optimization method that could combines all these shape constraints together. We directly use their c++ library ShapeOp to solve our shape optimization problem once a shape modification operation is performed.}
+\reply{\cite{Bouaziz:2012:SSD:2346796.2346802} proposed an efficient optimization method that could combines all these shape constraints together. We directly use their C++ library ShapeOp to solve our shape optimization problem once a shape modification operation is performed.}
 Figure~\ref{fig:shaperefinement} shows two examples of shape refinement by merging three vertexes and pasting three panels respectively. 
 
 \comments{
