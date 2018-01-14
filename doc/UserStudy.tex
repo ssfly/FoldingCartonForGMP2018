@@ -4,7 +4,7 @@ We conducted a user study to examine the productivity of our system in construct
 There are two experiments in our user study.
 % 
 In the first experiment, participants were asked to construct the digital 3D model from the same 2D layout using our system and a commercial software STUDIO, respectively, after a brief introduction.
-For each participant, ten examples were randomly selected from the 34 2D design layouts and presented to the participant for folding using our system and Studio.
+For each participant, 10 examples were randomly selected from the 34 2D design layouts and presented to the participant for folding using our system and Studio.
 A \emph{two-alternative forced choices} design was used, with the participant asked to choose which of the two systems they prefer to use considering the operation simplicity and modeling efficiency. 
 %
 Furthermore, participants were asked to rate our system from one to five on the necessity of layout optimization, while five indicates it is very necessary.
@@ -21,7 +21,7 @@ Based on the two experiments, our goal was to test the following hypotheses:
 
 \begin{itemize}
 	\item \textbf{Hypo1:} Our system takes less time and effort to construct a digital 3D mockup than the traditional software.
-	\item \textbf{Hypo2:} Our system provides more novel and practical functions to generate diverse layouts.
+	\item \textbf{Hypo2:} Our system provides novel and practical functions to generate diverse layouts.
 	\item \textbf{Hypo3:} Our system is effective for guiding non-expert users to fabricate complex cartons from 2D layouts.
 \end{itemize}
 
@@ -53,28 +53,6 @@ Take Figure~\ref{fig:result-more}(e) for example, participants usually spent muc
 On the other hand, one comment from the participants who preferred STUDIO is that the operation needed to learn in STUDIO is just selecting a folding edge and assigning angles, while our system requires them to learn more operations to construct the digital 3D model. 
 %
 
-
-
-\begin{figure}
-	\centering
-	\subfigure[System preference]{
-		\includegraphics[width=0.25\columnwidth,height=0.11\textheight]{images/preference.png}
-		\label{fig:preference}
-	}
-	%\vspace{-1ex}
-	\subfigure[Layout refinment]{
-		\includegraphics[width=0.4\columnwidth,height=0.1\textheight]{images/comparison}
-		\label{fig:correction}
-	}
-	%\vspace{-1ex}
-	\subfigure[Fabrication time]{
-		\includegraphics[width=0.25\columnwidth,height=0.11\textheight]{images/fabrication.png}
-		\label{fig:time}
-	}
-	\caption{(a) Compared with STUDIO, more participants prefer our system considering both the operation simplicity and modeling time. (b) Our system is able to automatically refine the inaccurate 2D layout, while STUDIO only generates the folded shape based on user assigned angles. (c) Comparison of fabrication times with/without video. It took much longer time for common users to fabricate a carton from a 2D layout only without our guide process.}
-	\label{fig:userstudy}
-\end{figure}
-
 With respect to \textbf{Hypo2}, 24 participants gave the highest score to our layout optimization function. 
 %
 In addition to explore the diversity of 2D layouts, it also can adjust the imprecise panels on the 2D layout to reach an ideal model. Figure~\ref{fig:correction} shows the final models constructed by our system and STUDIO, respectively. As we can see, Panel 1 is higher than Panel 2 in the digital model constructed by STUDIO, because the 2D layout is not as precise as the designer wants. 
@@ -95,6 +73,24 @@ As we can see, most participants who did not watch the guide video spent more ti
 %
 We also performed an independent-samples $t$-test at the level $\alpha = 0.05$ to compare the fabrication time, and the result shows the guide video has significant effectiveness on the fabrication of complex cartons for non-expert users.
 
-
+\begin{figure}[h]
+	\centering
+	\subfigure[System preference]{
+		\includegraphics[width=0.25\columnwidth,height=0.11\textheight]{images/preference.png}
+		\label{fig:preference}
+	}
+	\vspace{2ex}
+	\subfigure[Layout refinment]{
+		\includegraphics[width=0.35\columnwidth,height=0.08\textheight]{images/comparison}
+		\label{fig:correction}
+	}
+	\vspace{2ex}
+	\subfigure[Fabrication time]{
+		\includegraphics[width=0.25\columnwidth,height=0.11\textheight]{images/fabrication.png}
+		\label{fig:time}
+	}
+	\caption{(a) Compared with STUDIO, more participants prefer our system considering both the operation simplicity and modeling time. (b) Our system is able to automatically refine the inaccurate 2D layout, while STUDIO only generates the folded shape based on user assigned angles. (c) Comparison of fabrication times with/without video. It took much longer time for common users to fabricate a carton from a 2D layout only without our guide process.}
+	\label{fig:userstudy}
+\end{figure}
 
 
