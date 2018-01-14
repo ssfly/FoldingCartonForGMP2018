@@ -66,7 +66,7 @@ Finally, a hexagonal carton can be generated in a limited number of user interac
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/newMore}
-	\caption{More results need refinement. Users can manipulate more complicated cartons. The first and second column in each sub-figure are the flat mesh and initialization result of cartons, and the last two column shows the model after interaction in  different views. Circles marked in red means the part that need to be merged.}
+	\caption{More complicated results with shape refinement. In each example, the first two are the 2D layout and the initial model, and the last two show the final model in different views, and the middles are the intermediate shapes with different shape constraints, marked in red circles.}
 	\label{fig:result-more}
 \end{figure}
 
@@ -103,12 +103,17 @@ We can see that only a few user interactions on confirming system suggestions ar
 
 %%%%%%%%%% Limitations and discussions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\reply{ Our suggestive shape optimization is very useful in a wide range of cases. However, there are still some failure cases that we can not deal with. Figure~\ref{fig:failure} shows a case that failed to generate 3D model by optimization. The panels circled in red should be merged together to produce a strong enforced panel, while our system expanded the panel away. Moreover, we cannot deal with the case that if we want to layout down the back red panel and keep the bottom lines of green side panels together. The carton layouts whose panel graph has a loop will also be failed to construct corresponding model such as milk cartons.  
+\reply{ Our suggestive shape optimization is very useful in a wide range of cases. However, there are still some failure cases that our system can not deal with. Figure~\ref{fig:failure} shows a case that is challenging for our current system. The panels circled in red should be pasted together to produce a strong enforced panel.
+However, our system only ensure the coplanarity of the selected three facets, and as a result, the yellow facet is expanded in the opposite direction. 
+%
+Moreover, the pink back panel is orthogonal to the bottom panel after initialization and the two red edges are not aligned.   
+%
+Nevertheless, this can be solved by adding more editing tools, such as aligning edges, or assigning folding angle for a specific edge, such as STUDIO.
 }
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/moreLimitation}
-	\caption{A failure case that shape optimization can not handle with. }
+	\caption{Limitations in our current system. From left to right: a 2D layout, the initial model by folding each edge by $\pi/2$, optimized model by pasting the three panels circled in red, and the desired carton model from the 2D layout. }
 	\label{fig:failure}
 \end{figure}
