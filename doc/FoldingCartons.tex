@@ -1,7 +1,7 @@
  %
 % include the class file for GMP 2018  
 %
-\documentclass[submission]{gmp2018}
+\documentclass{gmp2018}
 \usepackage{graphicx}
 \usepackage{subfigure}
 
@@ -17,8 +17,7 @@
 %
 % put your submission number here
 % this number will appear instead of authors and affiliations if the class option "submission" is active
-%
-\SubNumber{1074}
+%\SubNumber{1074}
 
 %
 % put the author names here
@@ -42,28 +41,22 @@
  
 
 %\definecolor{red}{rgb}{1.0,0.0,0.0}
-%\definecolor{blue}{rgb}{0.0,0.0,1.0}
-\definecolor{purple}{rgb}{0.5,0.0,0.5}
-
-
-\newcommand{\comments}[1]{}
-\newcommand{\cxj}[1]{\textcolor{red}{(xuejin:#1)}}
-%\newcommand{\xjmd}[1]{\textcolor{purple}{#1}}
-\newcommand{\xjmd}[1]{#1}
+%\definecolor{blue}{rgb}{0.0,0.0,1.0} 
+ 
 \newcommand{\vo}{\hat{\mathbf{v}}}
 \newcommand{\vn}{\mathbf{v}}
 \newcommand{\vset}{\mathbb{V}}
 
 
-\newcommand{\reply}[1]{\textcolor{red}{#1}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \maketitle
 
 \begin{abstract}
-Cartons are broadly used in packaging industry and our daily life. While most of traditional packages are axis-aligned cuboids, there is a recent trend of creating paper packages and cartons with more complicated geometry. In this work, we present an interactive system to manipulate 3D cartons from 2D layouts. Two key components, \emph{automatic folding} and \emph{suggestive editing}, make our system significantly easy to use. 
-The automatic folding part automatically computes the 3D coordinates of vertexes in a 3D carton model based on a simple observation. Then the suggestive editing part smartly provides a group of geometric constraints, such as vertex merging, merging propagation, and panel pasting, for users to manipulate the 3D shapes.
-Moreover, automatic updating of the corresponding 2D layout is supported when the user constructs and edits the carton shape in 3D to correct and explore layouts.  
+Cartons are broadly used in the packaging industry and in our daily life. While most traditional packages are axis-aligned cuboids, there is a recent trend of creating paper packages and cartons with more complicated geometries. In this work, we present an interactive system to manipulate 3D cartons from 2D layouts. Two key components, \emph{automatic folding} and \emph{suggestive editing}, make our system remarkably easy to use. 
+The automatic folding step computes the 3D coordinates of vertexes in a 3D carton model based on a simple observation. Then, the suggestive editing step determines several geometric constraints, such as vertex merging, merging propagation, and panel pasting, so that user can flexibly manipulate 3D shapes.
+Moreover, our system supports automatic updating of the corresponding 2D layouts when the user constructs and edits carton shapes in 3D to correct and explore potential layouts.  
 \end{abstract}
 
 \input{Introduction}
@@ -88,6 +81,7 @@ Moreover, it is desired by designers to support appearance editing in our system
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgments} We thank the reviewers for their generous reviews. This work was supported by the National Natural Science Foundation of China under No. 61472377 and 61632006.
 
 \bibliographystyle{abbrv}
 \bibliography{ref}
