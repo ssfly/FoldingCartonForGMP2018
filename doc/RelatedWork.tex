@@ -1,88 +1,71 @@
 \section{Related Work}\label{sec:relatedwork}
 \subsection{Folding problem}
 
-Origami folding, producing a 3D shape from a single piece of planar sheet, has been widely studied for decades. Earlier techniques focus on the simulation of the folding process given the 2D crease pattern and its corresponding configuration of fold angles~\cite{Thiel1998,Kishi:1998:OFP:786112.786279,Nimnual2007Virtual}. Typically, these simulation systems require the folding order and angles of the creases in the 2D pattern. 
+Origami folding, which produces a 3D shape from a single planar sheet, has been widely studied for decades. Earlier techniques focus on simulating this folding process with a 2D crease pattern and the corresponding configuration of fold angles~\cite{Thiel1998,Kishi:1998:OFP:786112.786279,Nimnual2007Virtual}. Typically, these simulation systems require the folding order and the angles of the creases to exist within a 2D pattern. 
 %
-While a 2D crease pattern with mountain or valley type is given, a continuous process can be simulated for designing transformable and deployable structures~\cite{tachi2009simulation,tachigeometric}.
+If a 2D crease pattern is provided for a mountain or valley design, a continuous process can be simulated to design transformable and deployable structures~\cite{tachi2009simulation,tachigeometric}.
 %
-Above simulation systems primarily apply to paper origami with zero-thickness. Recently, many techniques~\cite{tachi2011rigid,chen2015origami,2016arXiv160105747K} were proposed to develop the kinetic synthesis for thick panels that can be folded identically to zero-thickness origami in mechanical engineering.
+The above simulation systems can be applied primarily for paper origami with zero-thickness. Recently, many mechanical engineering techniques~\cite{tachi2011rigid,chen2015origami,2016arXiv160105747K} have been proposed to develop the kinetic synthesis of thick panels that can be folded identically like zero-thickness origami.
 %
-These simulation systems are limited to the flat-foldable rigid origami with known mountain or valley crease types. In comparison, our system only takes the 2D crease pattern as input without knowing the folding angles of the creases. 
+These simulation systems are limited to flat-foldable rigid origami with known mountain or valley crease designs. In comparison, our system only takes the 2D crease pattern as input without knowing the folding angles of the creases. 
 
  
-There are also some methods to solve related problems of carton folding. 
-Song et al.~\cite{Song:2000:MPA:892954} modeled foldable objects as tree-like multilink objects and used the probabilistic roadmap methods~\cite{Kavraki:1994:PRP:891758} to find a sequence of motions to transform one configuration of a foldable object into another configuration. 
-Mullineux et al.~\cite{Mullineux:2010:CSC:1739328.1739673} provided a simulation framework for carton erection considering geometric constraints for assembly.
-Both of these two methods require the target 3D state given as a premise, while our work aims to recover the 3D configuration of the folded carton from a 2D layout.
+There are also some methods for solving related problems in carton folding. 
+Song et al.~\cite{Song:2000:MPA:892954} modeled foldable objects as tree-like multilink objects and used probabilistic roadmap methods~\cite{Kavraki:1994:PRP:891758} to find a sequence of motions to transform one configuration of a foldable object into another configuration. 
+Mullineux et al.~\cite{Mullineux:2010:CSC:1739328.1739673} provided a simulation framework for carton construction by considering geometric constraints for assembly.
+Both of these two methods require the target 3D state to be given as a premise, while our work aims to recover the 3D configuration of the folded carton from a 2D layout.
 
-\reply{ 
- Compared with straight creases in above approaches, curved folding, involving curved folds in the crease pattern, has also drawn attentions in computer graphics.  %
+ 
+Compared with the straight creases in the above approaches, curved folding, which involves the use of curved folds in the crease pattern, has also drawn a lot of attention in computer graphics.  %
  Kilian et al.~\cite{Kilian:2008:CF:1360612.1360674} presented an optimization-based framework to reconstruct a 2D development from a reference 3D surface.
  %
  Solomon et al.~\cite{Solomon:2012:FDS:2346796.2346817} introduced a discrete paradigm to model developable surfaces based on 2D configurations, where the crease pattern and the corresponding crease angles are pre-defined.
-% provided a subdivision based modeling scheme involving curved paper structure with folding angles on creases as input. 
+ %
 Recently, Kilian et al.~\cite{Kilian:2017:SAC:3087678.3015460} designed practical mechanisms to fabricate a curved folded surfaces simply by pulling a network of strings. 
 %the deformation of curved folded surfaces after the folding motion actuated by pulling a network of string. 
 %
 By contrast, we focus on an inverse problem of recovering the 3D shape from a 2D planar pattern without knowing any 3D information.
-}
-
-%The extra 3D information is represented as target 3D objects, folding angles or external forces above.
- 
 
 
 
-\comments{
-Folding two-dimensional pattern into three-dimensional objects has been studied in various fields, such as rigid origami folding, curved folding and carton folding. Despite the 2D pattern as an input, all of these problems need extra 3D information or interactions, while this paper chooses the 2D layout as only input.
 
-Rigid origami folding is similar to our problem, while the folding motion is mostly computed based on the given angle of creases, and consider the geometry of origami in kinetic motion~\cite{tachi2009simulation,tachigeometric}. The thickness problem of origami is also a direction of origami related research these years, and its goal is to simulate the folding behaviour exactly the same to when folding paper with zero thickness by designing different connecting structures between panels~\cite{chen2015origami,2016arXiv160105747K,tachi2011rigid}. Thick origami folding problem also has a target configuration to approximate.
-
-
-
-There are also some methods to solve related problems of carton folding. 
-Song et al.~\cite{Song:2000:MPA:892954} modeled foldable objects as tree like multilink objects and used PRMs~(probabilistic roadmap methods~\cite{Kavraki:1994:PRP:891758}) to find a sequence of motions to transform one configuration of a foldable object into another configuration. 
-Mullineux et al.~\cite{Mullineux:2010:CSC:1739328.1739673} provided a simulation framework of the carton during erection using a constraint-based approach. Both these work required the target state as a premise, while our work aims to generate the target configuration.
-
-Folding 2D layouts with interactive tools visualizes the folding behaviour of a single piece of paper. Thiel~\cite{Thiel1998} provided a virtual origami system including the user interface to model folded paper and show animations of folding process. Kishi et al.~\cite{Kishi:1998:OFP:786112.786279} allowed users to create and edit the origami properties over the Web. Nimnual et al.~\cite{Nimnual2007Virtual} presented an application for package folding practices in a virtual space. Although these applications can model folded paper well, they need given parameters to construct the model, or their final goal is flat folding which can also be seen as a premier to the problem.
-
-In addition, the above works cannot edit corresponding 3D model and optimize its layout in turn, which is one of the advantages of our system.
-}
- 
 
 \subsection{3D reconstruction of line drawings}
-\reply{Although having the same goal of constructing 3D models from 2D layouts including vertexes and edges, there is a one-to-one correspondence between the vertexes in the 2D line drawing and 3D model, while our problem recovers many-to-one correspondences and the 3D construction process is different.} 
+Although the aforementioned methods have the same goal of constructing 3D models from 2D layouts, including vertexes and edges, there is a one-to-one correspondence between the vertexes in the 2D line drawing and 3D model; however, our problem recovers many-to-one correspondences and the 3D construction process is different.
 
-A line drawing is defined as a 2D projection of a object containing its vertexes and edges. 3D interpretation of line drawings have been studied for a long time. 
+A line drawing is defined as a 2D projection of an object that contains its vertexes and edges. 3D interpretations of line drawings have been studied for a long time. 
 %The main problem is in object reconstruction given its projection on two-dimensional planes. 
 Some researchers treat this task as an optimization problem. 
 Marill~\cite{Marill:1991:EHI:113057.113061} first proposed the principle of minimizing the standard deviation (MSDA) of angles to emulate the interpretation of line drawings as 3D objects. 
 %
 This new criterion was used by many other researchers soon after. 
 Leclerc et al.~\cite{Leclerc1992An} combined MSDA with the deviation from planarity as objective terms. 
-Cao et al.~\cite{Cao:2005:ORS:1097114.1097658} added a symmetry metric of 3D objects to get more complicated results. 
-Some other researchers tried to solve this problem from the point of view of information theory.
+Cao et al.~\cite{Cao:2005:ORS:1097114.1097658} added a symmetry metric of 3D objects to obtain more complicated results. 
+Other researchers tried to solve this problem from the point of view of information theory.
 %
-Marill~\cite{Marill1992Why} minimized the description length of objects based on the idea that humans usually pick the simplest one from infinite possibilities when they see the line drawing. 
-Shoji et al.~\cite{Shoji20013} minimized the entropy of the angle distribution between line segments by a genetic algorithm. 
-Later, the strategy of splitting and merging was used to reconstruct line drawings of complex 3D objects~\cite{10.1109/TPAMI.2010.49,10.1109/CVPR.2014.94}.   
+Marill~\cite{Marill1992Why} minimized the description length of objects based on the idea that humans usually pick the simplest option from infinite possibilities when they see a line drawing. 
+Shoji et al.~\cite{Shoji20013} minimized the entropy of the angle distribution between line segments by utilizing a genetic algorithm. 
+Later, the strategy of splitting and merging was used to reconstruct the line drawings of complex 3D objects~\cite{10.1109/TPAMI.2010.49,10.1109/CVPR.2014.94}.   
 		 
-Different from line drawings, our input is the expanded structural layouts in 2D planes of 3D carton objects.
+Different from line drawings, our input consists of the expanded structural layouts of 3D carton objects as displayed in 2D planes.
+%
 The 3D carton model is constructed based on the folding procedure instead of the mathematical projection from 3D to 2D.
 
 \subsection{Geometrical shape optimization}
 %\reply{The basic idea of our paper is  shape optimization under a set of simple constraints.}
-In geometrical shape processing, many algorithms have been proposed to enforce shape constraints, and have been successfully used in interactive tools and physical simulation~\cite{Botsch:2006:PCP:1281957.1281959,Igarashi:2005:ASM:1186822.1073323}. 
-Bouaziz et al.~\cite{Bouaziz:2012:SSD:2346796.2346802} unified a large variety of geometric constraints into one optimization framework, and provided a simple and robust implementation. 
+In geometrical shape processing, many algorithms have been proposed to enforce shape constraints, which have been successfully used in interactive tools and physical simulation~\cite{Botsch:2006:PCP:1281957.1281959,Igarashi:2005:ASM:1186822.1073323}. 
+Bouaziz et al.~\cite{Bouaziz:2012:SSD:2346796.2346802} unified a large variety of geometric constraints into one optimization framework, thus providing a simple and robust implementation. 
 Poranne et al.~\cite{Poranne2013Interactive} described an interactive method to manipulate and optimize polyhedral meshes under constraints with a linear-time algorithm. 
 %
-Tang et al.~\cite{Tang:2014:FPM:2601097.2601213} solved constrained equations by Newton-type method in a fast way, and provided an interactive system to model meshes constrained by equalities and inequalities. 
-Deng et al.~\cite{Deng2015} developed an interactive tool to explore architectural design with shape constraints, and provided an optimization method to enforce hard constraints and soft constraints at the same time. 
+Tang et al.~\cite{Tang:2014:FPM:2601097.2601213} solved constrained equations by employing a Newton-type method in a fast way, which yielded an interactive system to model meshes constrained by equalities and inequalities. 
+Deng et al.~\cite{Deng2015} developed an interactive tool to explore architectural design with shape constraints.
+They also provided an optimization method to enforce hard constraints and soft constraints at the same time. 
 
-\xjmd{The studies mentioned above focus on optimizing existing 3D shapes with geometric constraints, and propose different optimization solutions.
+The studies mentioned above focus on optimizing existing 3D shapes with geometric constraints, by proposing different optimization solutions.
 %
 2D layouts are not involved in their problems.
 In contrast, our goal is to recover the structure and topology from an expanded layout to form a 3D carton model.
-The geometric constraints are automatically detected and presented for users to explore during the folding process. }
+The geometric constraints are automatically detected and presented for users to explore during the folding process.  
 %correspondence and our constraints do not need satisfy properties like fairness. 
 %In our paper, we implement the shape optimization by the method introduced in \cite{Bouaziz:2012:SSD:2346796.2346802} for its robustness and simplicity.
 
