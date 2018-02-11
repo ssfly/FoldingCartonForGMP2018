@@ -3,7 +3,8 @@
 %
 \documentclass{gmp2018}
 \usepackage{graphicx}
-\usepackage{subfigure}
+\usepackage{subfigure} 
+\usepackage[T1]{fontenc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -71,13 +72,12 @@ Moreover, our system supports automatic updating of the corresponding 2D layouts
 
 \section{Conclusion and Future Work}\label{sec:conclusion}
 In this paper, we present an interactive modeling system to construct a 3D carton model from a 2D expanded layout. 
-Based on the automatically folded rough model, a series of shape refinement suggestions are provided for smartly optimizing and editing the carton model, which assists users to produce the desired model efficiently and productively. 
+Based on the automatically folded rough model, a series of shape refinement suggestions are provided to intelligently optimize and edit carton models. This assists users so that they can produce desired models efficiently and productively.  
 %
-Our current system could be further improved in many directions. 
-More intelligent editing tools can be implemented. For example, when the user moves a vertex, the translation could be propagated to other symmetric vertexes.
-We also would like to improve our automatic folding part with a more comprehensive optimization formulation considering both shape closure and stability. 
+Despite these achievements, our current system could be further improved by adding more intelligent editing tools. For example, when a user moves a vertex, the translation could be propagated to other symmetric vertexes.
+We would also like to improve our automatic folding stage by employing a more comprehensive optimization formulation that considers both shape closure and stability. 
 %
-Moreover, it is desired by designers to support appearance editing in our system.
+Moreover, this feature would be a boon to designers as it would support appearance editing within our system. 
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
