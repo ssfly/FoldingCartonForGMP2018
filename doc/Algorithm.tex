@@ -58,9 +58,9 @@ For any two vertexes, $\mathbf{v}_p$ and $\mathbf{v}_q$, that are selected to be
 \end{equation}
 
 \paragraph{Panel pasting.} 
-If two panels, $P_a$ and $P_b$, need to snap together, all the vertexes from these two panels should satisfy the same coplanarity constraint. 
+If two panels, $P_a$ and $P_b$, need to be snapped together, all the vertexes from these two panels should satisfy the same coplanarity constraint. 
  
-Typically only a few shape modification operations are selected at each time; the above constraints form an under-constrained system to solve the new vertex coordinates. In order to find a feasible solution for the constrained problem, soft constraints are added to keep the original positions of the vertexes that are not relevant to the selected shape modification.
+Typically, only a few shape modification operations are selected at each time; the above constraints form an under-constrained system to solve the new vertex coordinates. In order to find a feasible solution for the constrained problem, soft constraints are added to keep the original positions of the vertexes that are not relevant to the selected shape modification.
 
 \paragraph{Irrelevant vertexes.} 
 Vertexes that are not in the same panel as any merged or pasted vertexes should remain in their original locations.

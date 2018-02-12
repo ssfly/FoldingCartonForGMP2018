@@ -1,7 +1,7 @@
 \section{Related Work}\label{sec:relatedwork}
 \subsection{Folding problem}
 
-Origami folding, which produces a 3D shape from a single planar sheet, has been widely studied for decades. Earlier techniques focus on simulating this folding process with a 2D crease pattern and the corresponding configuration of fold angles~\cite{Thiel1998,Kishi:1998:OFP:786112.786279,Nimnual2007Virtual}. Typically, these simulation systems require the folding order and the angles of the creases to exist within a 2D pattern. 
+Origami folding, which produces a 3D shape from a single planar sheet, has been widely studied for decades. Earlier techniques focus on simulating this folding process with a 2D crease pattern and a corresponding configuration of fold angles~\cite{Thiel1998,Kishi:1998:OFP:786112.786279,Nimnual2007Virtual}. Typically, these simulation systems require the folding order and the angles of the creases to exist within a 2D pattern. 
 %
 If a 2D crease pattern is provided for a mountain or valley design, a continuous process can be simulated to design transformable and deployable structures~\cite{tachi2009simulation,tachigeometric}.
 %
@@ -17,6 +17,7 @@ Both of these two methods require the target 3D state to be given as a premise, 
 
  
 Compared with the straight creases in the above approaches, curved folding, which involves the use of curved folds in the crease pattern, has also drawn a lot of attention in computer graphics.  %
+Tang et al.~\cite{Tang:2016:IDD:2882845.2832906} introduced a method for interactive design of developable surfaces that can handle side constraints including curved folding boundary conditions and isometry during interactive manipulation.
  Kilian et al.~\cite{Kilian:2008:CF:1360612.1360674} presented an optimization-based framework to reconstruct a 2D development from a reference 3D surface.
  %
  Solomon et al.~\cite{Solomon:2012:FDS:2346796.2346817} introduced a discrete paradigm to model developable surfaces based on 2D configurations, where the crease pattern and the corresponding crease angles are pre-defined.
@@ -36,7 +37,7 @@ Although the aforementioned methods have the same goal of constructing 3D models
 A line drawing is defined as a 2D projection of an object that contains its vertexes and edges. 3D interpretations of line drawings have been studied for a long time. 
 %The main problem is in object reconstruction given its projection on two-dimensional planes. 
 Some researchers treat this task as an optimization problem. 
-Marill~\cite{Marill:1991:EHI:113057.113061} first proposed the principle of minimizing the standard deviation (MSDA) of angles to emulate the interpretation of line drawings as 3D objects. 
+Marill~\cite{Marill:1991:EHI:113057.113061} first proposed the principle of minimizing the standard deviation of angles (MSDA) to emulate the interpretation of line drawings as 3D objects. 
 %
 This new criterion was used by many other researchers soon after. 
 Leclerc et al.~\cite{Leclerc1992An} combined MSDA with the deviation from planarity as objective terms. 
@@ -61,7 +62,7 @@ Tang et al.~\cite{Tang:2014:FPM:2601097.2601213} solved constrained equations by
 Deng et al.~\cite{Deng2015} developed an interactive tool to explore architectural design with shape constraints.
 They also provided an optimization method to enforce hard constraints and soft constraints at the same time. 
 
-The studies mentioned above focus on optimizing existing 3D shapes with geometric constraints, by proposing different optimization solutions.
+The studies mentioned above focus on optimizing existing 3D shapes with geometric constraints by proposing different optimization solutions.
 %
 2D layouts are not involved in their problems.
 In contrast, our goal is to recover the structure and topology from an expanded layout to form a 3D carton model.

@@ -29,7 +29,7 @@ In our system, three types of shape refinement operations, vertex merging, mergi
 		\label{fig:facepasting}
 	}
 	
-	\caption{Three different suggestions on shape modification. (a) A group of vertexes (marked in red) are detected as mergeable. $\mathbf{v}_a$ and $\mathbf{v}_b$ are close to each other, and one edge connected to $\mathbf{v}_a$ is the same length as one edge connected to $\mathbf{v}_b$ (green edges). $\mathbf{v}_c$ is also considered to be merged with $\mathbf{v}_a$ and $\mathbf{v}_b$ because $\mathbf{v}_c$ is close to $\mathbf{v}_b$ and one edge of $\mathbf{v}_c$ is the same length as $\mathbf{v}_b$ (blue edges). (b) Once the user confirms a suggested vertex merging operation, our system automatically proposes a symmetric group of vertexes that can be also merged (marked in blue). (c) If the panels marked in red are detected as being close to each other and having similar normals, our system suggests that these panels can be pasted together.}
+	\caption{Three different suggestions on shape modification. (a) A group of vertexes (marked in red) are detected as mergeable. $\mathbf{v}_a$ and $\mathbf{v}_b$ are close to each other, and one edge connected to $\mathbf{v}_a$ is the same length as one edge connected to $\mathbf{v}_b$ (green edges). $\mathbf{v}_c$ is also considered to be merged with $\mathbf{v}_a$ and $\mathbf{v}_b$ because $\mathbf{v}_c$ is close to $\mathbf{v}_b$ and one edge of $\mathbf{v}_c$ is the same length as $\mathbf{v}_b$ (blue edges). (b) Once the user confirms a suggested vertex merging operation, our system automatically proposes a symmetric group of vertexes that can also be merged (marked in blue). (c) If the panels marked in red are detected as being close to each other and having similar normals, our system suggests that these panels can be pasted together.}
 	\label{fig:suggestion}
 \end{figure}
 
@@ -44,7 +44,7 @@ $\epsilon$ is a distance threshold, and it is set as 50mm in our experiments.
 More vertexes can be merged together, as shown in Figure~\ref{fig:suggestion:a}, by gradually adding one vertex $\mathbf{v}$ each time if $\mathbf{v}$ is mergeable with at least one vertex in the current list of vertexes to merge.  
 
 \paragraph{Merging propagation.}  
-Once the user makes a decision to merge a subset of vertexes $\mathbb{V}=\{\mathbf{v}_i\}_{i=1,\ldots,K}$ based on our automatic suggestions or manual selections, our system will detect if another subset of vertexes $\vset_b$ exists that is symmetric to $\mathbb{V}$ and propagate the merging operation to $\vset_b$, as shown in Figure~\ref{fig:suggestion:b}. 
+Once the user makes a decision to merge a subset of vertexes, $\mathbb{V}=\{\mathbf{v}_i\}_{i=1,\ldots,K}$ based on our automatic suggestions or manual selections, our system will detect if another subset of vertexes $\vset_b$ exists that is symmetric to $\mathbb{V}$ and propagate the merging operation to $\vset_b$, as shown in Figure~\ref{fig:suggestion:b}. 
 A subset $\mathbb{V}_b$ is symmetric to $\mathbb{V}_a$ if $|\vset_a|=|\vset_b|$, and there is one-to-one correspondence between the vertexes in $\vset_a$ and $\vset_b$. 
 Here, $|\vset|$ is the number of vertexes in a vertex subset $\vset$. 
 Two vertexes, $\vn_a$ and $\vn_b$, are defined as corresponding vertexes if they have the same number of edges and one-to-one correspondence between the edge lengths. 
